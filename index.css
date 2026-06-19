@@ -261,7 +261,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
     transform: translateX(50%) rotate(0deg);
   }
   to {
-    transform: translateX(50%) rotate(360deg);
+    transform: translateX(50%) rotate(-360deg);
   }
 }
 .hero-grid {
