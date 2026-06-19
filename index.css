@@ -188,7 +188,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 .btn:active {
   transform: translateY(0);
 }
-.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--fg); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
 .btn-primary:hover { background: color-mix(in oklch, var(--accent) 85%, black); border-color: color-mix(in oklch, var(--accent) 85%, black); }
 .btn-mentor { background: var(--green); border-color: var(--green); color: var(--surface); }
 .btn-mentor:hover { background: color-mix(in oklch, var(--green) 85%, black); border-color: color-mix(in oklch, var(--green) 85%, black); }
@@ -644,7 +644,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 }
 .about-tab-btn.active {
   background: var(--accent);
-  color: var(--fg);
+  color: var(--surface);
 }
 .about-pane {
   display: none;
