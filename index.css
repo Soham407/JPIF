@@ -254,6 +254,15 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   background: url("Images/circle.png") center / contain no-repeat;
   opacity: 1;
   pointer-events: none;
+  animation: rotateCircle 60s linear infinite;
+}
+@keyframes rotateCircle {
+  from {
+    transform: translateX(50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(50%) rotate(360deg);
+  }
 }
 .hero-grid {
   position: relative;
