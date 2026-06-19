@@ -498,8 +498,13 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 }
 .partner-slot {
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+.partner-slot:first-child {
+  justify-content: flex-start;
+}
+.partner-slot:last-child {
+  justify-content: flex-end;
 }
 .partner-slot img {
   max-height: 46px;
@@ -587,7 +592,8 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   .field-grid { grid-template-columns: 1fr; }
   .mentor-table th:nth-child(2), .mentor-table td:nth-child(2) { display: none; }
   .warli-band { min-height: 118px; background-size: auto 104px; }
-  .partner-slots { grid-template-columns: 1fr; }
+  .partner-slots { grid-template-columns: 1fr; gap: 20px; }
+  .partner-slot:first-child, .partner-slot:last-child { justify-content: center; }
 }
 
 /* Custom Added Styles for Client Content */
