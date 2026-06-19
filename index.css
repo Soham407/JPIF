@@ -132,7 +132,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   min-height: 76px;
 }
 .brand-lockup img {
-  height: 80px;
+  height: 92px;
   width: auto;
   object-fit: contain;
   transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
