@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join our Mentors Pool - ACIC-JPIF</title>
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .mentor-hero {
+      padding-block: clamp(50px, 6vw, 90px);
+      background: radial-gradient(circle at 10% 90%, var(--saffron-soft), transparent 40%), linear-gradient(180deg, var(--surface), var(--bg));
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .onboarding-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 32px;
+      align-items: start;
+    }
+    
+    /* Interactive Tags styling */
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tag-checkbox {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .tag-checkbox:focus-visible + .tag-label {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .tag-label {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .tag-checkbox:checked + .tag-label {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--fg);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+    .tag-checkbox:disabled + .tag-label {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: var(--bg);
+    }
+    
+    .form-group {
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 650;
+      font-size: 14px;
+    }
+    .char-counter {
+      font-size: 11px;
+      color: var(--muted);
+      float: right;
+      margin-top: 4px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .stat-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .stat-card {
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .stat-val {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .checkbox-group input {
+      margin-top: 4px;
+    }
+    
+    /* Onboarding Success Screen */
+    .success-panel {
+      display: none;
+      animation: fadeIn 0.4s ease-out forwards;
+      text-align: center;
+      padding: 60px 40px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .success-panel.active {
+      display: block;
+    }
+    .success-icon {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 24px;
+    }
+    .success-icon svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    @media (max-width: 980px) {
+      .onboarding-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 580px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav" data-od-id="topnav">
+    <div class="container topnav-inner">
+      <a class="brand-lockup" href="index.html#home" aria-label="ACIC-JPIF home">
+        <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="280" height="140" />
+      </a>
+      <nav id="primary-nav" class="navlinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="program-detail.html">Incubation Programs</a>
+        <a href="mentors.html">Mentors</a>
+        <a href="support-cell.html">Support Cell</a>
+        <a href="community-hub.html">Community Hub</a>
+      </nav>
+      <a class="btn btn-mentor active" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section mentor-hero">
+      <div class="container">
+        <p class="eyebrow">join our network</p>
+        <h1>Join Our Mentors Pool</h1>
+        <p class="lead">If you are interested and motivated to mentor young innovators, aspiring startups, and high-impact ventures, please share your details below to join the ACIC-JPIF Incubator network.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div id="form-container">
+          <div class="onboarding-layout">
+            <!-- Form Block -->
+            <div class="card">
+              <h2 style="margin-bottom: 24px;">Mentor Registration Questionnaire</h2>
+              <form id="mentor-form" onsubmit="handleOnboardingSubmit(event)">
+                
+                <!-- 1. Email -->
+                <div class="form-group">
+                  <label for="mEmail">1. Email Address *</label>
+                  <input type="email" id="mEmail" class="form-control" placeholder="name@organization.com" required />
+                </div>
+
+                <!-- 2. Name -->
+                <div class="form-group">
+                  <span id="name-count" class="char-counter">50 character(s) remaining</span>
+                  <label for="mName">2. Full Name *</label>
+                  <input type="text" id="mName" class="form-control" placeholder="Enter your full name" maxlength="50" oninput="updateCounter('mName', 'name-count', 50)" required />
+                </div>
+
+                <!-- 3. Contact Number -->
+                <div class="form-group">
+                  <label for="mPhone">3. Contact Number *</label>
+                  <input type="tel" id="mPhone" class="form-control" placeholder="10-digit mobile number" required />
+                </div>
+
+                <!-- 4. LinkedIn Profile -->
+                <div class="form-group">
+                  <label for="mLinkedin">4. LinkedIn Profile URL *</label>
+                  <input type="url" id="mLinkedin" class="form-control" placeholder="https://www.linkedin.com/in/username" required />
+                </div>
+
+                <!-- 5. Current Organization -->
+                <div class="form-group">
+                  <span id="org-count" class="char-counter">250 character(s) remaining</span>
+                  <label for="mOrg">5. Current Organization *</label>
+                  <input type="text" id="mOrg" class="form-control" placeholder="Enter organization name" maxlength="250" oninput="updateCounter('mOrg', 'org-count', 250)" required />
+                </div>
+
+                <!-- 6. Position / Designation -->
+                <div class="form-group">
+                  <span id="pos-count" class="char-counter">250 character(s) remaining</span>
+                  <label for="mPos">6. Position / Designation *</label>
+                  <input type="text" id="mPos" class="form-control" placeholder="e.g. Director of Operations" maxlength="250" oninput="updateCounter('mPos', 'pos-count', 250)" required />
+                </div>
+
+                <!-- 7. Sectors of start-ups to mentor (Multiple choice, max 4) -->
+                <div class="form-group">
+                  <label>7. Please select the sectors of startups you would like to mentor * <span style="font-weight:normal; font-size:12px; color:var(--muted);">(Select not more than 4 options)</span></label>
+                  <div class="tag-grid" id="sector-grid">
+                    <input type="checkbox" name="mSectors" id="sec-edtech" class="tag-checkbox" value="Ed Tech" onchange="checkSectorLimit()" />
+                    <label for="sec-edtech" class="tag-label">Ed Tech</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-deeptech" class="tag-checkbox" value="DeepTech" onchange="checkSectorLimit()" />
+                    <label for="sec-deeptech" class="tag-label">DeepTech</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-agritech" class="tag-checkbox" value="AgriTech" onchange="checkSectorLimit()" />
+                    <label for="sec-agritech" class="tag-label">AgriTech</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-medtech" class="tag-checkbox" value="MedTech" onchange="checkSectorLimit()" />
+                    <label for="sec-medtech" class="tag-label">MedTech</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-traveltech" class="tag-checkbox" value="Travel Tech" onchange="checkSectorLimit()" />
+                    <label for="sec-traveltech" class="tag-label">Travel Tech</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-legal" class="tag-checkbox" value="Legal" onchange="checkSectorLimit()" />
+                    <label for="sec-legal" class="tag-label">Legal</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-fintech" class="tag-checkbox" value="Fintech" onchange="checkSectorLimit()" />
+                    <label for="sec-fintech" class="tag-label">Fintech</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-aiml" class="tag-checkbox" value="AI/ML" onchange="checkSectorLimit()" />
+                    <label for="sec-aiml" class="tag-label">AI/ML</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-mobility" class="tag-checkbox" value="Mobility" onchange="checkSectorLimit()" />
+                    <label for="sec-mobility" class="tag-label">Mobility</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-blockchain" class="tag-checkbox" value="Blockchain" onchange="checkSectorLimit()" />
+                    <label for="sec-blockchain" class="tag-label">Blockchain</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-manufacturing" class="tag-checkbox" value="Smart Manufacturing" onchange="checkSectorLimit()" />
+                    <label for="sec-manufacturing" class="tag-label">Smart Manufacturing</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-food" class="tag-checkbox" value="Food & Beverages" onchange="checkSectorLimit()" />
+                    <label for="sec-food" class="tag-label">Food & Beverages</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-waste" class="tag-checkbox" value="Waste management" onchange="checkSectorLimit()" />
+                    <label for="sec-waste" class="tag-label">Waste management</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-ev" class="tag-checkbox" value="EV" onchange="checkSectorLimit()" />
+                    <label for="sec-ev" class="tag-label">EV</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-transport" class="tag-checkbox" value="Transport & Communication" onchange="checkSectorLimit()" />
+                    <label for="sec-transport" class="tag-label">Transport & Communication</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-autos" class="tag-checkbox" value="Automobiles" onchange="checkSectorLimit()" />
+                    <label for="sec-autos" class="tag-label">Automobiles</label>
+
+                    <input type="checkbox" name="mSectors" id="sec-others" class="tag-checkbox" value="Others" onchange="checkSectorLimit()" />
+                    <label for="sec-others" class="tag-label">Others</label>
+                  </div>
+                </div>
+
+                <!-- 8. Brief Profile about yourself (500 chars limit) -->
+                <div class="form-group">
+                  <span id="profile-count" class="char-counter">500 character(s) remaining</span>
+                  <label for="mProfile">8. A brief Profile about yourself *</label>
+                  <textarea id="mProfile" class="form-control" rows="4" maxlength="500" oninput="updateCounter('mProfile', 'profile-count', 500)" placeholder="Tell us briefly about your focus, experience, and why you wish to mentor community enterprises..." required></textarea>
+                </div>
+
+                <!-- 9. What type of startups to mentor -->
+                <div class="form-group">
+                  <label>9. What type of startups would you like to mentor? *</label>
+                  <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="mStartupType" value="Idea Stage" checked required /><span>Idea Stage</span></label>
+                    <label class="radio-item"><input type="radio" name="mStartupType" value="Prototype Stage" required /><span>Prototype Stage</span></label>
+                    <label class="radio-item"><input type="radio" name="mStartupType" value="Early Revenue" required /><span>Early Revenue</span></label>
+                    <label class="radio-item"><input type="radio" name="mStartupType" value="Growth Stage" required /><span>Growth Stage</span></label>
+                  </div>
+                </div>
+
+                <!-- 10. Availability Frequency -->
+                <div class="form-group">
+                  <label>10. How often will you be available to connect with the Entrepreneur? * <span style="font-weight:normal; font-size:12px; color:var(--muted);">(Each meeting is typically for 60 minutes)</span></label>
+                  <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="mFrequency" value="More than twice a week" checked required /><span>More than twice a week</span></label>
+                    <label class="radio-item"><input type="radio" name="mFrequency" value="1 - 2 times a week" required /><span>1 - 2 times a week</span></label>
+                    <label class="radio-item"><input type="radio" name="mFrequency" value="Once in every two weeks" required /><span>Once in every two weeks</span></label>
+                    <label class="radio-item"><input type="radio" name="mFrequency" value="Once in a month" required /><span>Once in a month</span></label>
+                  </div>
+                </div>
+
+                <!-- 11. Mentee Matching Areas -->
+                <div class="form-group">
+                  <label>11. Mentee Matching Areas * <span style="font-weight:normal; font-size:12px; color:var(--muted);">(Select all areas you want to support)</span></label>
+                  <div class="tag-grid">
+                    <input type="checkbox" name="mAreas" id="area-bplan" class="tag-checkbox" value="Developing/ Modifying a business plan" />
+                    <label for="area-bplan" class="tag-label">Developing/ Modifying a business plan</label>
+
+                    <input type="checkbox" name="mAreas" id="area-strat" class="tag-checkbox" value="Business Strategic Planning" />
+                    <label for="area-strat" class="tag-label">Business Strategic Planning</label>
+
+                    <input type="checkbox" name="mAreas" id="area-softdev" class="tag-checkbox" value="Product Development (Software/ Hardware)" />
+                    <label for="area-softdev" class="tag-label">Product Development (Software/ Hardware)</label>
+
+                    <input type="checkbox" name="mAreas" id="area-proddev" class="tag-checkbox" value="Product Development" />
+                    <label for="area-proddev" class="tag-label">Product Development</label>
+
+                    <input type="checkbox" name="mAreas" id="area-sales" class="tag-checkbox" value="Sales/ Business Development" />
+                    <label for="area-sales" class="tag-label">Sales/ Business Development</label>
+
+                    <input type="checkbox" name="mAreas" id="area-marketing" class="tag-checkbox" value="Branding and Marketing" />
+                    <label for="area-marketing" class="tag-label">Branding and Marketing</label>
+
+                    <input type="checkbox" name="mAreas" id="area-data" class="tag-checkbox" value="Data Analytics" />
+                    <label for="area-data" class="tag-label">Data Analytics</label>
+
+                    <input type="checkbox" name="mAreas" id="area-transfer" class="tag-checkbox" value="Technology Development and/ or Transfer" />
+                    <label for="area-transfer" class="tag-label">Technology Development and/ or Transfer</label>
+
+                    <input type="checkbox" name="mAreas" id="area-advisory" class="tag-checkbox" value="Incubation Advisory" />
+                    <label for="area-advisory" class="tag-label">Incubation Advisory</label>
+
+                    <input type="checkbox" name="mAreas" id="area-pitch" class="tag-checkbox" value="Pitch deck & Pitching" />
+                    <label for="area-pitch" class="tag-label">Pitch deck & Pitching</label>
+
+                    <input type="checkbox" name="mAreas" id="area-invest" class="tag-checkbox" value="Investor Connections" />
+                    <label for="area-invest" class="tag-label">Investor Connections</label>
+                  </div>
+                </div>
+
+                <!-- 12. Anything else to share -->
+                <div class="form-group">
+                  <label for="mComment">12. Is there anything else you would like to share with us?</label>
+                  <textarea id="mComment" class="form-control" rows="3" placeholder="Additional notes or specific requirements..."></textarea>
+                </div>
+
+                <!-- Consent Checkboxes -->
+                <div style="margin-block: 24px;">
+                  <label class="checkbox-group">
+                    <input type="checkbox" required />
+                    <span>I consent to share my details with the ACIC-JPIF matching cell for entrepreneur connection. *</span>
+                  </label>
+                  <label class="checkbox-group">
+                    <input type="checkbox" required />
+                    <span>I confirm the accuracy of information filled above. *</span>
+                  </label>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; min-height: 48px;">Submit Registration</button>
+              </form>
+            </div>
+
+            <!-- Sidebar Info -->
+            <aside class="onboarding-sidebar">
+              <div class="card" style="background: var(--navy-soft); margin-bottom: 24px;">
+                <h3>Why Mentor at ACIC-JPIF?</h3>
+                <p style="margin-top:12px; font-size:14px; color:var(--muted); line-height:1.7;">By onboarding as an expert, you help bridge the gap between institutional frameworks and rural micro-enterprise operations. You will have direct exposure to:</p>
+                <ul style="margin-top: 15px; padding-left: 20px; font-size: 14px; color: var(--muted); display:grid; gap:10px;">
+                  <li><strong>Bamboo Ecosystem:</strong> Support scaling nursery and processing micro-units.</li>
+                  <li><strong>Agritech & Biotech:</strong> Guide translation of laboratory research to local fields.</li>
+                  <li><strong>Community Enterprises:</strong> Help FPOs and SHGs transition to registered companies.</li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <h3>Ecosystem Impact Today</h3>
+                <div class="stat-list">
+                  <div class="stat-card">
+                    <div class="stat-val">22+</div>
+                    <div class="stat-label" style="font-size: 13px; font-weight:700;">Active Mentors Mapped</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-val">150+</div>
+                    <div class="stat-label" style="font-size: 13px; font-weight:700;">Innovators Mentored</div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- Success Panel -->
+        <div id="success-panel" class="card success-panel">
+          <div class="success-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path></svg>
+          </div>
+          <h2 style="color: var(--green);">Mentor Profile Received!</h2>
+          <p style="margin-block: 18px; color: var(--muted);">Thank you for registering your expertise with ACIC-JPIF. Our ecosystem matching coordinator will review your sector selections, stages, and availability slots.</p>
+          <p style="margin-bottom: 30px; font-size: 14px; color: var(--muted);">A confirmation details email has been sent to <span id="conf-email" style="font-weight:700; color:var(--fg);"></span>.</p>
+          <a href="index.html" class="btn btn-secondary">Go to Home Page</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="warli-divider" aria-label="Warli art divider"><div class="warli-band"></div></section>
+  </main>
+
+  <footer class="pagefoot" data-od-id="footer">
+    <div class="container footer-grid">
+      <div><img class="footer-logo" src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="320" height="160" loading="lazy" decoding="async" /><p>ACIC-JPIF connects incubation programs, professional mentors, and rural enterprise communities through one trusted digital portal.</p></div>
+      <div>
+        <h3>Reach ACIC-JPIF</h3>
+        <ul class="pagefoot-contact-details" style="list-style:none; padding:0; display:grid; gap:12px;">
+          <li><span class="meta">Address</span><br />Jnana Prabodhini Navnagar Vidyalaya (JPNV), Sector 25, Pradhikaran Road, Nigdi, Pimpri-Chinchwad Pradhikaran, Maharashtra 411044. INDIA.</li>
+          <li><span class="meta">Phone</span><br />+91 93250 41714</li>
+          <li><span class="meta">Email</span><br /><a href="mailto:contact@acic-jpif.org">contact@acic-jpif.org</a></li>
+        </ul>
+        <a class="btn whatsapp" href="https://wa.me/919325041714" aria-label="Open WhatsApp chat shortcut">WhatsApp Chat</a>
+      </div>
+      <div><h3>Partners & Ecosystem</h3><div class="partner-slots" aria-label="Partner logos"><div class="partner-slot">deAsra Foundation</div><div class="partner-slot">NITI Aayog (AIM)</div></div></div>
+    </div>
+  </footer>
+
+  <script>
+    // Max 4 sector check validation
+    function checkSectorLimit() {
+      const checkedBoxes = document.querySelectorAll('input[name="mSectors"]:checked');
+      const allBoxes = document.querySelectorAll('input[name="mSectors"]');
+      
+      if (checkedBoxes.length >= 4) {
+        allBoxes.forEach(box => {
+          if (!box.checked) {
+            box.disabled = true;
+          }
+        });
+      } else {
+        allBoxes.forEach(box => {
+          box.disabled = false;
+        });
+      }
+    }
+
+    // Interactive character counters
+    function updateCounter(inputFieldId, countSpanId, maxLimit) {
+      const field = document.getElementById(inputFieldId);
+      const counterSpan = document.getElementById(countSpanId);
+      const remaining = maxLimit - field.value.length;
+      counterSpan.textContent = remaining + " character(s) remaining";
+      
+      if (remaining <= 0) {
+        counterSpan.style.color = "red";
+      } else {
+        counterSpan.style.color = "var(--muted)";
+      }
+    }
+
+    // Onboarding Form submission
+    function handleOnboardingSubmit(event) {
+      event.preventDefault();
+      
+      const emailVal = document.getElementById('mEmail').value;
+      document.getElementById('conf-email').textContent = emailVal;
+      
+      // Hide form container and show success panel
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success-panel').classList.add('active');
+      document.getElementById('success-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

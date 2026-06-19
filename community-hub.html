@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Hub - ACIC-JPIF</title>
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .hub-hero {
+      padding-block: clamp(50px, 6vw, 90px);
+      background: radial-gradient(circle at 80% 80%, var(--green-soft), transparent 45%), linear-gradient(180deg, var(--surface), var(--bg));
+      border-bottom: 1px solid var(--border);
+    }
+    
+    /* Category Filter Tab styling */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-block: 30px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .filter-tab:hover {
+      border-color: var(--muted);
+      background: var(--bg);
+    }
+    .filter-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--fg);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 20px;
+    }
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    /* Support Router Panel */
+    .support-router {
+      max-width: 720px;
+      margin-inline: auto;
+    }
+    .router-select-box {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .coordinator-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: var(--shadow);
+      min-height: 180px;
+      animation: fadeIn 0.4s ease-out;
+    }
+    .coord-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 28px;
+      font-weight: 850;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--border);
+    }
+    .coord-details h3 {
+      margin-bottom: 4px;
+    }
+    .coord-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .coord-meta a {
+      color: var(--accent-text);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .coord-ico {
+      width: 15px;
+      height: 15px;
+      vertical-align: -3px;
+      color: var(--muted);
+    }
+    .coord-meta > span { display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Success Stories Card */
+    .story-img-placeholder {
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--navy-soft), var(--green-soft));
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* Program details styles */
+    .comm-program-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .comm-program-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--green);
+    }
+    .comm-program-card h4 {
+      font-size: 18px;
+      color: var(--green-text);
+      font-weight: 700;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 6px;
+    }
+    .comm-program-card ul {
+      padding-left: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      display: grid;
+      gap: 6px;
+      margin: 0;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+      .coordinator-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav" data-od-id="topnav">
+    <div class="container topnav-inner">
+      <a class="brand-lockup" href="index.html#home" aria-label="ACIC-JPIF home">
+        <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="280" height="140" />
+      </a>
+      <nav id="primary-nav" class="navlinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="program-detail.html">Incubation Programs</a>
+        <a href="mentors.html">Mentors</a>
+        <a href="support-cell.html">Support Cell</a>
+        <a href="community-hub.html" class="active">Community Hub</a>
+      </nav>
+      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hub-hero">
+      <div class="container">
+        <p class="eyebrow">community pathways</p>
+        <h1>ACIC-JPIF Community Hub</h1>
+        <p class="lead">Building enterprises for community prosperity. Discover specialized resource tools, district coordinator links, and capacity programs enabling underserved collectives to become economically self-reliant.</p>
+      </div>
+    </section>
+
+    <!-- Community Entrepreneurship Programs Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">capacity building</p>
+            <h2>Community Entrepreneurship Programs</h2>
+            <p class="lead">We empower target beneficiary groups with core skills, technical access, and market linkages.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <!-- SHGs -->
+          <div class="comm-program-card">
+            <h4>Self Help Groups (SHGs)</h4>
+            <p style="font-size:13px; font-weight:600;">Transition saving collectives into commercial enterprises.</p>
+            <ul>
+              <li><strong>Enterprise Development:</strong> Structured path to corporate registry.</li>
+              <li><strong>Value Addition Activities:</strong> Sorting, grading, and basic processing setup.</li>
+              <li><strong>Product Development:</strong> Design, testing, and standard certifications.</li>
+              <li><strong>Financial Literacy:</strong> Capital accounting, compliance, and banking links.</li>
+            </ul>
+          </div>
+
+          <!-- Farmers & FPOs -->
+          <div class="comm-program-card">
+            <h4>Farmers & FPOs</h4>
+            <p style="font-size:13px; font-weight:600;">Empower agricultural collectives with business scaling.</p>
+            <ul>
+              <li><strong>Agri Entrepreneurship:</strong> Processing unit models and cold logistics.</li>
+              <li><strong>Processing Enterprises:</strong> Milling, packaging, and sorting setups.</li>
+              <li><strong>Market Linkages:</strong> Direct B2B retail links and wholesale network access.</li>
+              <li><strong>Technology Adoption:</strong> Mechanical tools and soil data setups.</li>
+            </ul>
+          </div>
+
+          <!-- Bamboo Entrepreneurs -->
+          <div class="comm-program-card">
+            <h4>Bamboo Entrepreneurs</h4>
+            <p style="font-size:13px; font-weight:600;">Leverage rural bamboo resources for sustainable products.</p>
+            <ul>
+              <li><strong>Bamboo Cultivation:</strong> Crop management and plantation frameworks.</li>
+              <li><strong>Nursery Development:</strong> High-yield crop propagation.</li>
+              <li><strong>Processing Units:</strong> Treatment, splitting, and sizing machinery.</li>
+              <li><strong>Product Manufacturing:</strong> Structural, craft, and industrial builds.</li>
+              <li><strong>Market Access:</strong> Wholesale commercial purchase contracts.</li>
+            </ul>
+          </div>
+
+          <!-- Women Entrepreneurs -->
+          <div class="comm-program-card">
+            <h4>Women Entrepreneurs</h4>
+            <p style="font-size:13px; font-weight:600;">Support home-based micro-enterprises to scale up.</p>
+            <ul>
+              <li><strong>Home-Based Enterprises:</strong> Cottage processing, packaging, and assembly checks.</li>
+              <li><strong>Rural Business Development:</strong> Local sales modeling and vendor setups.</li>
+              <li><strong>Skill Enhancement:</strong> Technical workshops and product refinement.</li>
+              <li><strong>Leadership Development:</strong> Financial control and team management training.</li>
+            </ul>
+          </div>
+
+          <!-- Rural Youth -->
+          <div class="comm-program-card">
+            <h4>Rural Youth</h4>
+            <p style="font-size:13px; font-weight:600;">Provide local livelihood opportunities in rural areas.</p>
+            <ul>
+              <li><strong>Startup Development:</strong> Launching service and trading operations.</li>
+              <li><strong>Innovation Competitions:</strong> Rural hackathons and project awards.</li>
+              <li><strong>Entrepreneurship Training:</strong> Business planning and sales pitches.</li>
+              <li><strong>Livelihood Opportunities:</strong> Technical jobs creation locally.</li>
+            </ul>
+          </div>
+
+          <!-- Students & Researchers -->
+          <div class="comm-program-card">
+            <h4>Students & Researchers</h4>
+            <p style="font-size:13px; font-weight:600;">Translate academic innovations into commercial products.</p>
+            <ul>
+              <li><strong>Innovation Commercialization:</strong> Transitioning lab mockups to fields.</li>
+              <li><strong>Startup Creation:</strong> Incorporations and co-founder mapping.</li>
+              <li><strong>Research Translation:</strong> Pilot deployments and field performance audits.</li>
+              <li><strong>Product Development:</strong> Material optimization and lab certification checks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--navy-soft); margin-top:30px;">
+          <h3 style="font-size:20px; color:var(--accent-text);">Core Program Interventions</h3>
+          <p style="font-size:14px; margin-top:8px; color:var(--muted); line-height:1.6;">Our incubation models deploy structured interventions across target groups: <strong>Entrepreneurship Development Programs (EDPs) • Technical & Skill Development Workshops • Design Thinking Sessions • Dedicated Business Mentoring • Direct Technology Transfer • Access to Finance & Micro-credit • Direct Market Linkages • Incubation Advisory Support</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- deAsra Knowledge Hub Banner Section -->
+    <section class="section" style="background: linear-gradient(135deg, var(--saffron-soft), var(--surface)); border-block: 1px solid var(--border);">
+      <div class="container grid-2" style="align-items: center;">
+        <div>
+          <span class="pill" style="color:var(--accent-text); border-color:var(--accent); background:transparent;">Ecosystem Partners</span>
+          <h2 style="margin-top: 15px; margin-bottom: 12px;">deAsra Foundation Knowledge Hub</h2>
+          <p style="color: var(--muted); line-height:1.6;">Access our digital training library powered by deAsra Foundation. Get step-by-step guides, market templates, compliance handbooks, and modular learning units curated specifically for micro-entrepreneurs and collective groups.</p>
+          <a class="btn btn-primary" href="https://www.deasra.in/" target="_blank" rel="noopener noreferrer" style="margin-top:20px;">Open deAsra Training Modules</a>
+        </div>
+        <div class="card" style="border-style:dashed; text-align:center;">
+          <h3>Learn How to Register</h3>
+          <p style="font-size:14px; color:var(--muted); margin-top:10px;">Our collaborative modules cover local compliances, Shop Act registrations, FSSAI permits, and digital ledger bookkeeping tools.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">resource center</p>
+            <h2>Compliance Toolkits and Manuals</h2>
+            <p class="lead">Download templates, model bye-laws, and micro-enterprise compliance guidelines curated for rural collectives.</p>
+          </div>
+        </div>
+
+        <div class="filter-tabs" role="group" aria-label="Filter resources by audience">
+          <button type="button" class="filter-tab active" aria-pressed="true" onclick="filterResources('all')">All Resources</button>
+          <button type="button" class="filter-tab" aria-pressed="false" onclick="filterResources('shg')">SHG Toolkits</button>
+          <button type="button" class="filter-tab" aria-pressed="false" onclick="filterResources('fpo')">FPO Guidelines</button>
+          <button type="button" class="filter-tab" aria-pressed="false" onclick="filterResources('women')">Women Entrepreneurs</button>
+        </div>
+
+        <div class="resources-grid" id="resources-wrapper">
+          <!-- Card 1 (SHG) -->
+          <div class="card resource-card" data-category="shg">
+            <div>
+              <span class="pill" style="color:var(--accent-text); background:var(--saffron-soft); border:0;">SHG Transition Kit</span>
+              <h3 style="margin-top: 12px; margin-bottom: 8px;">SHG to Micro-Enterprise Guide</h3>
+              <p style="color: var(--muted); font-size:14px;">Detailed step-by-step roadmap to shift saving-circle groups into product-manufacturing entities, highlighting joint liability setup.</p>
+            </div>
+            <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+              <span class="meta">PDF (2.4 MB)</span>
+              <button type="button" class="btn btn-secondary" onclick="alert('Downloading Toolkit: SHG to Micro-Enterprise Guide')">Download</button>
+            </div>
+          </div>
+
+          <!-- Card 2 (FPO) -->
+          <div class="card resource-card" data-category="fpo">
+            <div>
+              <span class="pill" style="color:var(--green-text); background:var(--green-soft); border:0;">FPO Guidelines</span>
+              <h3 style="margin-top: 12px; margin-bottom: 8px;">FPO Compliance Checklist</h3>
+              <p style="color: var(--muted); font-size:14px;">A structured calendar of annual regulatory compliances for Farmer Producer Companies under MCA and NCDC guidelines.</p>
+            </div>
+            <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+              <span class="meta">Excel (.xlsx)</span>
+              <button type="button" class="btn btn-secondary" onclick="alert('Downloading Template: FPO Compliance Checklist')">Download</button>
+            </div>
+          </div>
+
+          <!-- Card 3 (Women) -->
+          <div class="card resource-card" data-category="women">
+            <div>
+              <span class="pill" style="color:var(--accent-text); background:var(--saffron-soft); border:0;">Branding & Packaging</span>
+              <h3 style="margin-top: 12px; margin-bottom: 8px;">Rural Branding Toolkit</h3>
+              <p style="color: var(--muted); font-size:14px;">Simple visual templates, packaging design checklists, and local market positioning toolkits customized for women-led businesses.</p>
+            </div>
+            <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+              <span class="meta">PDF (4.8 MB)</span>
+              <button type="button" class="btn btn-secondary" onclick="alert('Downloading Toolkit: Rural Branding Toolkit')">Download</button>
+            </div>
+          </div>
+
+          <!-- Card 4 (All / FPO) -->
+          <div class="card resource-card" data-category="fpo">
+            <div>
+              <span class="pill" style="color:var(--green-text); background:var(--green-soft); border:0;">FPO Logistics</span>
+              <h3 style="margin-top: 12px; margin-bottom: 8px;">Supply Chain Management</h3>
+              <p style="color: var(--muted); font-size:14px;">Introduction to warehousing partnerships, cold storage schemes, and transport logistics frameworks available in Maharashtra.</p>
+            </div>
+            <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
+              <span class="meta">PDF (1.8 MB)</span>
+              <button type="button" class="btn btn-secondary" onclick="alert('Downloading Guide: Supply Chain Management')">Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Coordinator Routing -->
+    <section class="section" style="background: var(--navy-soft);">
+      <div class="container">
+        <div class="section-head" style="text-align: center; justify-content: center;">
+          <div style="max-width:600px;">
+            <p class="eyebrow">local assistance</p>
+            <h2>Connect with Your District Cell</h2>
+            <p class="lead">Choose your district below to route your query to the right regional coordinator.</p>
+          </div>
+        </div>
+
+        <div class="support-router">
+          <div class="router-select-box">
+            <label for="district-select" style="font-weight: 700; margin-right: 12px; font-size: 15px;">Select Your District Cell:</label>
+            <select id="district-select" class="form-control" style="width: auto; display: inline-block; min-width: 200px;" onchange="routeCoordinator(this.value)">
+              <option value="pune">Pune District Cell</option>
+              <option value="satara">Satara District Cell</option>
+              <option value="solapur">Solapur District Cell</option>
+            </select>
+          </div>
+
+          <!-- Coordinator Output Display -->
+          <div class="coordinator-card" id="coord-card">
+            <div class="coord-avatar" id="coord-avatar">RD</div>
+            <div class="coord-details">
+              <span class="eyebrow" id="coord-district" style="font-size:10px;">Pune District Coordinator</span>
+              <h3 id="coord-name">Rahul Deshmukh</h3>
+              <p id="coord-desc" style="font-size: 14px; color: var(--muted);">Coordinates agritech incubation entry, local SHG validation workshops, and coordinates mentor physical visits in Pune and Nigdi region.</p>
+              <div class="coord-meta">
+                <span><svg class="coord-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> <strong style="color:var(--fg);" id="coord-phone">+91 98220 12345</strong></span>
+                <span><svg class="coord-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="m22 7-10 6L2 7"/></svg> <a href="mailto:pune.acic@jpif.org" id="coord-email">pune.acic@jpif.org</a></span>
+                <a href="https://wa.me/919822012345" id="coord-wa" class="btn btn-secondary" style="font-size:13px;" aria-label="WhatsApp coordinator">Chat WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">proven impact</p>
+            <h2>Grassroots Success Stories</h2>
+            <p class="lead">Learn how regional groups transitioned into commercial models using JPIF resources.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="story-img-placeholder">Maval Rice Brand</div>
+            <span class="pill" style="color:var(--green-text); background:var(--green-soft); border:0;">FPO Scaling</span>
+            <h3 style="margin-top: 12px; margin-bottom: 6px;">Maval Mahila FPO</h3>
+            <p style="color: var(--muted); font-size: 14px;">Aggregated 150+ women farmers to establish a shared packaging unit, increasing average member crop income by 28%.</p>
+          </div>
+          <div class="card">
+            <div class="story-img-placeholder">Handloom Weaving</div>
+            <span class="pill" style="color:var(--accent-text); background:var(--saffron-soft); border:0;">SHG Transition</span>
+            <h3 style="margin-top: 12px; margin-bottom: 6px;">Bhimthadi Weaving Collective</h3>
+            <p style="color: var(--muted); font-size: 14px;">12-member SHG transitioned to a registered cooperative, partnering with online handicraft platforms for urban markets.</p>
+          </div>
+          <div class="card">
+            <div class="story-img-placeholder">Briquetting Plant</div>
+            <span class="pill" style="color:var(--fg); background:var(--navy-soft); border:0;">Agritech Youth</span>
+            <h3 style="margin-top: 12px; margin-bottom: 6px;">Awasari Biomass Unit</h3>
+            <p style="color: var(--muted); font-size: 14px;">Rural youth innovators developed simple crop-waste compression units, supplying heating pellets to nearby bakeries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="warli-divider" aria-label="Warli art divider"><div class="warli-band"></div></section>
+  </main>
+
+  <footer class="pagefoot" data-od-id="footer">
+    <div class="container footer-grid">
+      <div><img class="footer-logo" src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="320" height="160" loading="lazy" decoding="async" /><p>ACIC-JPIF connects incubation programs, professional mentors, and rural enterprise communities through one trusted digital portal.</p></div>
+      <div>
+        <h3>Reach ACIC-JPIF</h3>
+        <ul class="pagefoot-contact-details" style="list-style:none; padding:0; display:grid; gap:12px;">
+          <li><span class="meta">Address</span><br />Jnana Prabodhini Navnagar Vidyalaya (JPNV), Sector 25, Pradhikaran Road, Nigdi, Pimpri-Chinchwad Pradhikaran, Maharashtra 411044. INDIA.</li>
+          <li><span class="meta">Phone</span><br />+91 93250 41714</li>
+          <li><span class="meta">Email</span><br /><a href="mailto:contact@acic-jpif.org">contact@acic-jpif.org</a></li>
+        </ul>
+        <a class="btn whatsapp" href="https://wa.me/919325041714" aria-label="Open WhatsApp chat shortcut">WhatsApp Chat</a>
+      </div>
+      <div><h3>Partners & Ecosystem</h3><div class="partner-slots" aria-label="Partner logos"><div class="partner-slot">deAsra Foundation</div><div class="partner-slot">NITI Aayog (AIM)</div></div></div>
+    </div>
+  </footer>
+
+  <script>
+    function filterResources(category) {
+      // Toggle button active classes
+      const tabs = document.querySelectorAll('.filter-tab');
+      tabs.forEach(tab => {
+        const cat = tab.getAttribute('onclick').match(/'([^']+)'/)[1];
+        const isActive = cat === category;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      // Show/hide resource cards
+      const cards = document.querySelectorAll('.resource-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    const coordinators = {
+      pune: {
+        initials: "RD",
+        district: "Pune District Cell",
+        name: "Rahul Deshmukh",
+        desc: "Coordinates agritech incubation entry, local SHG validation workshops, and coordinates mentor physical visits in Pune and Nigdi region.",
+        phone: "+91 98220 12345",
+        email: "pune.acic@jpif.org"
+      },
+      satara: {
+        initials: "AP",
+        district: "Satara District Cell",
+        name: "Anjali Patil",
+        desc: "Coordinates micro-finance guidance sessions, women entrepreneur setups, and rural handicraft market linkage coordination across Satara.",
+        phone: "+91 98554 67890",
+        email: "satara.acic@jpif.org"
+      },
+      solapur: {
+        initials: "SS",
+        district: "Solapur District Cell",
+        name: "Sanjay Shinde",
+        desc: "Manages Farmer Producer Organization compliance mapping, agricultural logistics, cold storage connections, and irrigation startups.",
+        phone: "+91 97665 43210",
+        email: "solapur.acic@jpif.org"
+      }
+    };
+
+    function routeCoordinator(district) {
+      const card = document.getElementById('coord-card');
+      const data = coordinators[district];
+      
+      if (!data) return;
+
+      // Animate card transition
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(4px)';
+      
+      setTimeout(() => {
+        document.getElementById('coord-avatar').textContent = data.initials;
+        document.getElementById('coord-district').textContent = data.district;
+        document.getElementById('coord-name').textContent = data.name;
+        document.getElementById('coord-desc').textContent = data.desc;
+        document.getElementById('coord-phone').textContent = data.phone;
+        document.getElementById('coord-email').textContent = data.email;
+        document.getElementById('coord-email').setAttribute('href', `mailto:${data.email}`);
+        document.getElementById('coord-wa').setAttribute('href', "https://wa.me/" + data.phone.replace(/[^0-9]/g, ""));
+        
+        card.style.opacity = 1;
+        card.style.transform = 'translateY(0)';
+      }, 200);
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){
+    var data = {};
+    var api = {
+      getItem: function(k){ return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : null; },
+      setItem: function(k, v){ data[k] = String(v); },
+      removeItem: function(k){ delete data[k]; },
+      clear: function(){ data = {}; },
+      key: function(i){ return Object.keys(data)[i] || null; }
+    };
+    Object.defineProperty(api, 'length', { get: function(){ return Object.keys(data).length; } });
+    return api;
+  }
+  function tryShim(name){
+    var works = false;
+    try { works = !!window[name] && typeof window[name].getItem === 'function'; void window[name].length; }
+    catch (_) { works = false; }
+    if (works) return;
+    try { Object.defineProperty(window, name, { configurable: true, value: makeStore() }); }
+    catch (_) { try { window[name] = makeStore(); } catch (__) {} }
+  }
+  tryShim('localStorage');
+  tryShim('sessionStorage');
+  })();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Startup Support Cell & Services - ACIC-JPIF</title>
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .support-hero {
+      background: linear-gradient(135deg, var(--green-text) 0%, #064e3b 100%);
+      color: #fff;
+      padding: 80px 0 60px 0;
+      text-align: center;
+    }
+    .support-hero h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .support-hero .lead {
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav" data-od-id="topnav">
+    <div class="container topnav-inner">
+      <a class="brand-lockup" href="index.html#home" aria-label="ACIC-JPIF home">
+        <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="280" height="140" />
+      </a>
+      <nav id="primary-nav" class="navlinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="program-detail.html">Incubation Programs</a>
+        <a href="mentors.html">Mentors</a>
+        <a href="support-cell.html" class="active">Support Cell</a>
+        <a href="community-hub.html">Community Hub</a>
+      </nav>
+      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section support-hero">
+      <div class="container">
+        <p class="eyebrow" style="color: #ffffff;">business support cell</p>
+        <h1>Startup Support Services</h1>
+        <p class="lead">Below professional services are accessible to our registered community incubatees at highly discounted operational rates.</p>
+      </div>
+    </section>
+
+    <!-- Support Services Section -->
+    <section class="section" id="support">
+      <div class="container">
+        <div class="services-grid" style="margin-top: 20px;">
+          <div class="service-card">
+            <div class="iconbox" aria-hidden="true" style="background:var(--saffron-soft);">
+              <img src="Images/Legal & Compliance.svg" alt="Legal & Compliance Icon" />
+            </div>
+            <h3>Legal Support</h3>
+            <ul>
+              <li>Company Incorporations (Pvt Ltd, LLP, Section 8)</li>
+              <li>Patenting and IP Filing assistance</li>
+              <li>Drafting Founders Agreements & NDAs</li>
+            </ul>
+          </div>
+          
+          <div class="service-card">
+            <div class="iconbox" aria-hidden="true" style="background:var(--green-soft);">
+              <img src="Images/Design Thinking.svg" alt="Design Thinking Icon" />
+            </div>
+            <h3>Design Thinking</h3>
+            <ul>
+              <li>Design thinking workshops & bootcamps</li>
+              <li>User research & empathy validation</li>
+              <li>Value proposition design consulting</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="iconbox" aria-hidden="true" style="background:var(--navy-soft);">
+              <img src="Images/Marketing.svg" alt="Marketing Icon" />
+            </div>
+            <h3>Marketing & Planning</h3>
+            <ul>
+              <li>Advertisement material design & local campaigns</li>
+              <li>Wholesale & retail sales strategies</li>
+              <li>Business Model Canvas (BMC) workshops</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="iconbox" aria-hidden="true" style="background:var(--saffron-soft);">
+              <img src="Images/Finance.svg" alt="Finance Icon" />
+            </div>
+            <h3>Finance & CS Cell</h3>
+            <ul>
+              <li>ITR filing and projected financial statements</li>
+              <li>MCA compliance, share allocations, ROC filings</li>
+              <li>Bookkeeping setup and tax guidance</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="iconbox" aria-hidden="true" style="background:var(--green-soft);">
+              <img src="Images/IT and systems.svg" alt="IT & Online Systems Icon" />
+            </div>
+            <h3>IT & Online Systems</h3>
+            <ul>
+              <li>Basic business website setup & hosting</li>
+              <li>Online & social media marketing strategy</li>
+              <li>No-code systems & open source ERP setups</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="iconbox" aria-hidden="true" style="background:var(--navy-soft);">
+              <img src="Images/Scientific consulting.svg" alt="Scientific Consulting Icon" />
+            </div>
+            <h3>Scientific Consulting</h3>
+            <ul>
+              <li>Assistance in biotechnology research & testing</li>
+              <li>Chemical analysis and microbiology troubleshooting</li>
+              <li>Makerspace prototype mechanical fabrication support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Warli divider band -->
+    <section class="warli-divider" data-od-id="warli-divider" aria-label="Warli art divider">
+      <div class="warli-band"></div>
+    </section>
+  </main>
+
+  <footer class="pagefoot" data-od-id="footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="320" height="160" loading="lazy" decoding="async" />
+        <p>ACIC-JPIF connects incubation programs, professional mentors, and rural enterprise communities through one trusted digital portal.</p>
+      </div>
+      <div>
+        <h3>Reach ACIC-JPIF</h3>
+        <ul class="pagefoot-contact-details" style="list-style:none; padding:0; display:grid; gap:12px;">
+          <li><span class="meta">Address</span><br />Jnana Prabodhini Navnagar Vidyalaya (JPNV), Sector 25, Pradhikaran Road, Nigdi, Pimpri-Chinchwad Pradhikaran, Maharashtra 411044. INDIA.</li>
+          <li><span class="meta">Phone</span><br />+91 93250 41714</li>
+          <li><span class="meta">Email</span><br /><a href="mailto:contact@acic-jpif.org">contact@acic-jpif.org</a></li>
+        </ul>
+        <a class="btn whatsapp" href="https://wa.me/919325041714" aria-label="Open WhatsApp chat shortcut">WhatsApp Chat</a>
+      </div>
+      <div>
+        <h3>Partners & Ecosystem</h3>
+        <div class="partner-slots" aria-label="Partner logos">
+          <div class="partner-slot">deAsra Foundation</div>
+          <div class="partner-slot">NITI Aayog (AIM)</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

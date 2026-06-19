@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){
+    var data = {};
+    var api = {
+      getItem: function(k){ return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : null; },
+      setItem: function(k, v){ data[k] = String(v); },
+      removeItem: function(k){ delete data[k]; },
+      clear: function(){ data = {}; },
+      key: function(i){ return Object.keys(data)[i] || null; }
+    };
+    Object.defineProperty(api, 'length', { get: function(){ return Object.keys(data).length; } });
+    return api;
+  }
+  function tryShim(name){
+    var works = false;
+    try { works = !!window[name] && typeof window[name].getItem === 'function'; void window[name].length; }
+    catch (_) { works = false; }
+    if (works) return;
+    try { Object.defineProperty(window, name, { configurable: true, value: makeStore() }); }
+    catch (_) { try { window[name] = makeStore(); } catch (__) {} }
+  }
+  tryShim('localStorage');
+  tryShim('sessionStorage');
+  })();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Mentors Pool - ACIC-JPIF</title>
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .mentors-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0c2340 100%);
+      color: #fff;
+      padding: 80px 0 60px 0;
+      text-align: center;
+    }
+    .mentors-hero h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .mentors-hero .lead {
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav" data-od-id="topnav">
+    <div class="container topnav-inner">
+      <a class="brand-lockup" href="index.html#home" aria-label="ACIC-JPIF home">
+        <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="280" height="140" />
+      </a>
+      <nav id="primary-nav" class="navlinks" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="program-detail.html">Incubation Programs</a>
+        <a href="mentors.html" class="active">Mentors</a>
+        <a href="support-cell.html">Support Cell</a>
+        <a href="community-hub.html">Community Hub</a>
+      </nav>
+      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section mentors-hero">
+      <div class="container">
+        <p class="eyebrow" style="color: var(--accent);">guidance network</p>
+        <h1>Professional Mentors Pool</h1>
+        <p class="lead">Registered mentors are available to all active incubatees with prior appointment for 1 hour per week.</p>
+        <div style="margin-top: 24px;">
+          <a class="btn btn-primary" href="mentor-onboarding.html">Join Our Mentors Pool</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mentor Network Section -->
+    <section class="section" id="mentors">
+      <div class="container">
+        <div class="about-tabs" role="tablist" aria-label="Mentor expertise category selector" style="margin-bottom: 40px;">
+          <button type="button" class="about-tab-btn active" role="tab" id="m-tab-all" onclick="filterMentors('all')">All Specializations</button>
+          <button type="button" class="about-tab-btn" role="tab" id="m-tab-legal" onclick="filterMentors('legal')">Legal & Compliance</button>
+          <button type="button" class="about-tab-btn" role="tab" id="m-tab-finance" onclick="filterMentors('finance')">Finance & Compliance</button>
+          <button type="button" class="about-tab-btn" role="tab" id="m-tab-marketing" onclick="filterMentors('marketing')">Marketing & Branding</button>
+          <button type="button" class="about-tab-btn" role="tab" id="m-tab-business" onclick="filterMentors('business')">Business Development</button>
+          <button type="button" class="about-tab-btn" role="tab" id="m-tab-design" onclick="filterMentors('design')">Design Thinking</button>
+          <button type="button" class="about-tab-btn" role="tab" id="m-tab-market" onclick="filterMentors('market')">Market Linkages</button>
+        </div>
+
+        <div class="mentor-grid" id="mentor-wrapper">
+          <!-- Legal -->
+          <div class="mentor-card" data-cat="legal">
+            <h4>Bhate and Ponkshe Associates</h4>
+            <span class="meta">Legal / Patenting</span>
+            <p>Providing expert advisory on patent filings, IP rights protection, and entity registrations.</p>
+          </div>
+          <div class="mentor-card" data-cat="legal">
+            <h4>Ms. Rashmi Hingmire</h4>
+            <span class="meta">Legal / Patenting</span>
+            <p>Specializes in legal agreements, entity structured setups, and patent pathways.</p>
+          </div>
+          <div class="mentor-card" data-cat="legal">
+            <h4>Ms. Pallavi Salunke</h4>
+            <span class="meta">Company Compliance</span>
+            <p>Handles annual filings, MCA audits, corporate governance structure, and registrar compliance.</p>
+          </div>
+
+          <!-- Finance -->
+          <div class="mentor-card" data-cat="finance">
+            <h4>Ms. Sharmishtha Chiplunkar</h4>
+            <span class="meta">Finance and Revenue</span>
+            <p>Financial projections modeling, audit preparation, and corporate accounts strategy.</p>
+          </div>
+          <div class="mentor-card" data-cat="finance">
+            <h4>Mr. Kishor Jadhav</h4>
+            <span class="meta">Finance and Revenue</span>
+            <p>Advising on bookkeeping, local cooperative tax systems, and working capital loans.</p>
+          </div>
+          <div class="mentor-card" data-cat="finance">
+            <h4>Mr. Sagar Kanade</h4>
+            <span class="meta">Finance and Revenue</span>
+            <p>Strategic revenue tracking, tax compliance and project grant budgeting.</p>
+          </div>
+
+          <!-- Marketing -->
+          <div class="mentor-card" data-cat="marketing">
+            <h4>Ms. Bhargavi Kanade</h4>
+            <span class="meta">Marketing / Branding</span>
+            <p>Product brand storytelling, packaging design checks, and retail placement systems.</p>
+          </div>
+          <div class="mentor-card" data-cat="marketing">
+            <h4>Mr. Chandrasekhar Chincholkar</h4>
+            <span class="meta">Marketing / Branding</span>
+            <p>Rural branding setups, brand positioning, and regional distribution routes.</p>
+          </div>
+          <div class="mentor-card" data-cat="marketing">
+            <h4>Mr. Raghavendra Ponkshe</h4>
+            <span class="meta">Marketing / Branding</span>
+            <p>Corporate advertising partnerships and local customer acquisition strategies.</p>
+          </div>
+
+          <!-- Business Planning -->
+          <div class="mentor-card" data-cat="business">
+            <h4>Mr. Ketan Joshi</h4>
+            <span class="meta">Business Planning and Development</span>
+            <p>Scaling small operations, business canvas modeling, and operational scaling steps.</p>
+          </div>
+          <div class="mentor-card" data-cat="business">
+            <h4>Mr. Rohan Panse</h4>
+            <span class="meta">Business Planning and Development</span>
+            <p>Project roadmap building, corporate connect programs, and investment readiness.</p>
+          </div>
+          <div class="mentor-card" data-cat="business">
+            <h4>Mr. Gireendra Kasamalkar</h4>
+            <span class="meta">Business Planning and Development</span>
+            <p>Strategic business scale-up, technology transfer operations, and investor pitching.</p>
+          </div>
+          <div class="mentor-card" data-cat="business">
+            <h4>Mr. Suhas Kulkarni</h4>
+            <span class="meta">Business Planning and Development</span>
+            <p>Enterprise growth planning, resource mapping, and local government connections.</p>
+          </div>
+          <div class="mentor-card" data-cat="business">
+            <h4>Mr. Pravin Patil</h4>
+            <span class="meta">Business Planning and Development</span>
+            <p>Industrial linkages, project feasibility evaluation, and rural hub development.</p>
+          </div>
+
+          <!-- Market Linkages -->
+          <div class="mentor-card" data-cat="market">
+            <h4>NYOM</h4>
+            <span class="meta">Market Linkages</span>
+            <p>Establishing commercial retail partnerships and supply chain logistics connections.</p>
+          </div>
+          <div class="mentor-card" data-cat="market">
+            <h4>Codex Solutions</h4>
+            <span class="meta">Market Linkages & IT</span>
+            <p>E-commerce setup, digital market channels, and IT integrations advisory.</p>
+          </div>
+          <div class="mentor-card" data-cat="market">
+            <h4>The Bamboo Move</h4>
+            <span class="meta">Market Linkages & Materials</span>
+            <p>Focuses on commercial bamboo products marketing, design, and wholesale networks.</p>
+          </div>
+          <div class="mentor-card" data-cat="market">
+            <h4>Nature’s Root Herbal Co.</h4>
+            <span class="meta">Market Linkages & Ayurvedic</span>
+            <p>Ayurvedic formulations processing networks and herbal product marketing channels.</p>
+          </div>
+
+          <!-- Design Thinking -->
+          <div class="mentor-card" data-cat="design">
+            <h4>Dr. Shweta Nirgudkar</h4>
+            <span class="meta">Design Thinking Experts</span>
+            <p>User-centric concept modeling, user research guides, and value proposition checks.</p>
+          </div>
+          <div class="mentor-card" data-cat="design">
+            <h4>Dr. Nachiket Thakur</h4>
+            <span class="meta">Design Thinking Experts</span>
+            <p>Empathy mappings, rapid industrial prototyping, and maker setup optimization.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Warli divider band -->
+    <section class="warli-divider" data-od-id="warli-divider" aria-label="Warli art divider">
+      <div class="warli-band"></div>
+    </section>
+  </main>
+
+  <footer class="pagefoot" data-od-id="footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="320" height="160" loading="lazy" decoding="async" />
+        <p>ACIC-JPIF connects incubation programs, professional mentors, and rural enterprise communities through one trusted digital portal.</p>
+      </div>
+      <div>
+        <h3>Reach ACIC-JPIF</h3>
+        <ul class="pagefoot-contact-details" style="list-style:none; padding:0; display:grid; gap:12px;">
+          <li><span class="meta">Address</span><br />Jnana Prabodhini Navnagar Vidyalaya (JPNV), Sector 25, Pradhikaran Road, Nigdi, Pimpri-Chinchwad Pradhikaran, Maharashtra 411044. INDIA.</li>
+          <li><span class="meta">Phone</span><br />+91 93250 41714</li>
+          <li><span class="meta">Email</span><br /><a href="mailto:contact@acic-jpif.org">contact@acic-jpif.org</a></li>
+        </ul>
+        <a class="btn whatsapp" href="https://wa.me/919325041714" aria-label="Open WhatsApp chat shortcut">WhatsApp Chat</a>
+      </div>
+      <div>
+        <h3>Partners & Ecosystem</h3>
+        <div class="partner-slots" aria-label="Partner logos">
+          <div class="partner-slot">deAsra Foundation</div>
+          <div class="partner-slot">NITI Aayog (AIM)</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic filtering for Mentors Pool
+    function filterMentors(category) {
+      // Toggle button states
+      document.querySelectorAll('#mentors .about-tab-btn').forEach(function(btn) {
+        var active = btn.id === 'm-tab-' + category;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      // Filter cards
+      document.querySelectorAll('#mentor-wrapper .mentor-card').forEach(function(card) {
+        var match = category === 'all' || card.getAttribute('data-cat') === category;
+        card.style.display = match ? 'flex' : 'none';
+      });
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
