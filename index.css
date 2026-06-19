@@ -252,7 +252,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   transform: translateX(-50%);
   top: 48px;
   background: url("Images/circle.png") center / contain no-repeat;
-  opacity: 0.25;
+  opacity: 0.5;
   pointer-events: none;
 }
 .hero-grid {
