@@ -490,18 +490,19 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 .pagefoot p, .pagefoot a, .pagefoot .meta { color: var(--footer-muted); }
 .pagefoot h3 { margin-bottom: 16px; }
 .pagefoot-contact-details { margin: 0; }
-.partner-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.partner-slot {
-  min-height: 46px;
+.partner-slots {
   display: grid;
-  place-items: center;
-  border: 1px solid color-mix(in oklch, var(--surface) 15%, transparent);
-  border-radius: 10px;
-  background: var(--surface);
-  padding: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.partner-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .partner-slot img {
-  max-height: 30px;
+  max-height: 46px;
   width: auto;
   object-fit: contain;
 }
