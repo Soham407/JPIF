@@ -132,13 +132,13 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   min-height: 76px;
 }
 .brand-lockup img {
-  height: 92px;
+  height: 96px;
   width: auto;
   object-fit: contain;
   transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .topnav.is-scrolled .brand-lockup img {
-  height: 52px;
+  height: 68px;
 }
 .navlinks {
   display: flex;
@@ -510,13 +510,13 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
     min-height: 68px;
   }
   .brand-lockup img {
-    height: 62px;
+    height: 76px;
     width: auto;
     object-fit: contain;
     transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .topnav.is-scrolled .brand-lockup img {
-    height: 48px;
+    height: 60px;
   }
   .nav-toggle { display: inline-grid; }
   .topnav .btn-mentor { display: none; }
@@ -555,11 +555,17 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   .section-head { display: block; }
 }
 @media (max-width: 620px) {
+  .topnav-inner {
+    min-height: 72px;
+  }
+  .topnav.is-scrolled .topnav-inner {
+    min-height: 58px;
+  }
   .brand-lockup img {
-    height: 52px;
+    height: 64px;
   }
   .topnav.is-scrolled .brand-lockup img {
-    height: 42px;
+    height: 50px;
   }
   .topnav .btn { padding-inline: 13px; font-size: 13px; }
   .hero-actions .btn { width: 100%; }
