@@ -679,15 +679,17 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   color: var(--muted);
   cursor: pointer;
   transition: all 0.2s ease;
-  background: none;
-  border: 1px solid transparent;
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 .about-tab-btn:hover {
   background: var(--navy-soft);
   color: var(--fg);
+  border-color: var(--muted);
 }
 .about-tab-btn.active {
   background: var(--accent);
+  border-color: var(--accent);
   color: var(--surface);
 }
 .about-pane {
