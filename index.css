@@ -491,25 +491,22 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 .pagefoot h3 { margin-bottom: 16px; }
 .pagefoot-contact-details { margin: 0; }
 .partner-slots {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
   align-items: center;
 }
 .partner-slot {
   display: flex;
   align-items: center;
 }
-.partner-slot:first-child {
-  justify-content: flex-start;
-}
-.partner-slot:last-child {
-  justify-content: flex-end;
-}
 .partner-slot img {
-  max-height: 46px;
+  max-height: 42px;
   width: auto;
   object-fit: contain;
+  background: #fff;
+  border: 6px solid #fff;
+  border-radius: 8px;
 }
 .whatsapp { margin-top: 18px; background: var(--green); border-color: var(--green); color: var(--surface); }
 
@@ -592,8 +589,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   .field-grid { grid-template-columns: 1fr; }
   .mentor-table th:nth-child(2), .mentor-table td:nth-child(2) { display: none; }
   .warli-band { min-height: 118px; background-size: auto 104px; }
-  .partner-slots { grid-template-columns: 1fr; gap: 20px; }
-  .partner-slot:first-child, .partner-slot:last-child { justify-content: center; }
+  .partner-slots { justify-content: center; gap: 12px; }
 }
 
 /* Custom Added Styles for Client Content */
