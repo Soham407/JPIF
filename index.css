@@ -498,7 +498,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   border: 1px solid color-mix(in oklch, var(--surface) 15%, transparent);
   border-radius: 10px;
   background: var(--surface);
-  padding: 4px 10px;
+  padding: 0;
 }
 .partner-slot img {
   max-height: 30px;
