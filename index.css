@@ -501,7 +501,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   align-items: center;
 }
 .partner-slot img {
-  max-height: 42px;
+  max-height: 50px;
   width: auto;
   object-fit: contain;
   background: #fff;
