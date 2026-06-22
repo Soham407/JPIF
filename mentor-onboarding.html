@@ -76,12 +76,6 @@
       font-weight: 650;
       font-size: 14px;
     }
-    .char-counter {
-      font-size: 11px;
-      color: var(--muted);
-      float: right;
-      margin-top: 4px;
-    }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -232,9 +226,8 @@
 
                 <!-- 2. Name -->
                 <div class="form-group">
-                  <span id="name-count" class="char-counter">50 character(s) remaining</span>
                   <label for="mName">2. Full Name *</label>
-                  <input type="text" id="mName" class="form-control" placeholder="Enter your full name" maxlength="50" oninput="updateCounter('mName', 'name-count', 50)" required />
+                  <input type="text" id="mName" class="form-control" placeholder="Enter your full name" required />
                 </div>
 
                 <!-- 3. Contact Number -->
@@ -251,16 +244,14 @@
 
                 <!-- 5. Current Organization -->
                 <div class="form-group">
-                  <span id="org-count" class="char-counter">250 character(s) remaining</span>
                   <label for="mOrg">5. Current Organization *</label>
-                  <input type="text" id="mOrg" class="form-control" placeholder="Enter organization name" maxlength="250" oninput="updateCounter('mOrg', 'org-count', 250)" required />
+                  <input type="text" id="mOrg" class="form-control" placeholder="Enter organization name" required />
                 </div>
 
                 <!-- 6. Position / Designation -->
                 <div class="form-group">
-                  <span id="pos-count" class="char-counter">250 character(s) remaining</span>
                   <label for="mPos">6. Position / Designation *</label>
-                  <input type="text" id="mPos" class="form-control" placeholder="e.g. Director of Operations" maxlength="250" oninput="updateCounter('mPos', 'pos-count', 250)" required />
+                  <input type="text" id="mPos" class="form-control" placeholder="e.g. Director of Operations" required />
                 </div>
 
                 <!-- 7. Sectors of start-ups to mentor (Multiple choice, max 4) -->
@@ -322,9 +313,8 @@
 
                 <!-- 8. Brief Profile about yourself (500 chars limit) -->
                 <div class="form-group">
-                  <span id="profile-count" class="char-counter">500 character(s) remaining</span>
                   <label for="mProfile">8. A brief Profile about yourself *</label>
-                  <textarea id="mProfile" class="form-control" rows="4" maxlength="500" oninput="updateCounter('mProfile', 'profile-count', 500)" placeholder="Tell us briefly about your focus, experience, and why you wish to mentor community enterprises..." required></textarea>
+                  <textarea id="mProfile" class="form-control" rows="4" placeholder="Tell us briefly about your focus, experience, and why you wish to mentor community enterprises..." required></textarea>
                 </div>
 
                 <!-- 9. What type of startups to mentor -->
@@ -412,7 +402,7 @@
 
             <!-- Sidebar Info -->
             <aside class="onboarding-sidebar">
-              <div class="card" style="background: var(--navy-soft); margin-bottom: 24px;">
+              <div class="card" style="margin-bottom: 24px;">
                 <h3>Why Mentor at ACIC-JPIF?</h3>
                 <p style="margin-top:12px; font-size:14px; color:var(--muted); line-height:1.7;">By onboarding as an expert, you help bridge the gap between institutional frameworks and rural micro-enterprise operations. You will have direct exposure to:</p>
                 <ul style="margin-top: 15px; padding-left: 20px; font-size: 14px; color: var(--muted); display:grid; gap:10px;">
@@ -488,20 +478,6 @@
         allBoxes.forEach(box => {
           box.disabled = false;
         });
-      }
-    }
-
-    // Interactive character counters
-    function updateCounter(inputFieldId, countSpanId, maxLimit) {
-      const field = document.getElementById(inputFieldId);
-      const counterSpan = document.getElementById(countSpanId);
-      const remaining = maxLimit - field.value.length;
-      counterSpan.textContent = remaining + " character(s) remaining";
-      
-      if (remaining <= 0) {
-        counterSpan.style.color = "red";
-      } else {
-        counterSpan.style.color = "var(--muted)";
       }
     }
 
