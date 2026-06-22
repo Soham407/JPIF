@@ -213,6 +213,16 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   border-color: var(--green);
   color: var(--surface);
 }
+.btn-green {
+  background: transparent;
+  border-color: var(--green);
+  color: var(--green);
+}
+.btn-green:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--surface);
+}
 .btn-secondary {
   background: transparent;
   border-color: var(--border);
@@ -781,9 +791,28 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 16px;
+  align-items: flex-start;
+}
+.mentor-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--navy-soft);
+  color: var(--accent-text);
+  font-size: 20px;
+  font-weight: 750;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.mentor-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 .mentor-card h4 {
   margin: 0;
@@ -858,4 +887,145 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 .portal-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+
+/* Navigation Dropdown Menu & Topnav Partner Logos */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav-dropdown-toggle {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+}
+.nav-dropdown-toggle:hover, 
+.nav-dropdown-toggle.active {
+  color: var(--accent-text);
+}
+.nav-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px;
+  min-width: 180px;
+  box-shadow: var(--shadow-sm);
+  z-index: 100;
+  margin-top: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  transition-delay: 0.5s; /* Keep dropdown for 0.5 sec so it's easier to tap into */
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+.nav-dropdown-menu a:hover, 
+.nav-dropdown-menu a.active {
+  background: var(--navy-soft);
+  color: var(--accent-text);
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
+}
+
+.topnav-logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 20px);
+  margin-left: 10px;
+}
+.nav-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.topnav.is-scrolled .nav-logo {
+  height: 38px;
+}
+
+@media (max-width: 980px) {
+  .topnav-logos {
+    display: none; /* Hide in mobile sticky bar */
+  }
+  .nav-dropdown {
+    display: grid;
+    gap: 2px;
+  }
+  .nav-dropdown-toggle {
+    padding: 12px 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: left;
+    width: 100%;
+    color: var(--muted);
+    font-weight: 650;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-dropdown-toggle svg {
+    transition: transform 0.2s ease;
+  }
+  .nav-dropdown-toggle.is-active svg {
+    transform: rotate(180deg);
+  }
+  .nav-dropdown-menu {
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    position: static;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+    margin-top: 0;
+    min-width: unset;
+    transition: none;
+    transition-delay: 0s;
+  }
+  .nav-dropdown-menu.is-open {
+    display: grid;
+    gap: 2px;
+  }
+  .nav-dropdown-menu a {
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mentor-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+  .mentor-info {
+    align-items: center;
+  }
 }

@@ -1,21 +1,16 @@
 // Shared portal behavior: accessible mobile navigation toggle.
 (function () {
-  // The mentor CTA lives outside the link list, so surface it inside the
-  // collapsed mobile menu (where the bar CTA is hidden).
-  var nav = document.getElementById('primary-nav');
-  if (nav && !nav.querySelector('.nav-cta')) {
-    var cta = document.createElement('a');
-    cta.className = 'nav-cta';
-    cta.href = 'mentor-onboarding.html';
-    cta.textContent = 'Join Mentor Pool';
-    nav.appendChild(cta);
-  }
-
   function closeNav() {
     var nav = document.getElementById('primary-nav');
     var toggle = document.querySelector('.nav-toggle');
     if (nav) nav.classList.remove('is-open');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.nav-dropdown-menu').forEach(function (m) {
+      m.classList.remove('is-open');
+    });
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(function (t) {
+      t.classList.remove('is-active');
+    });
   }
 
   // Shrink the sticky header once the page scrolls away from the top.
@@ -54,6 +49,18 @@
   }
 
   document.addEventListener('click', function (e) {
+    var dropdownToggle = e.target.closest('.nav-dropdown-toggle');
+    if (dropdownToggle && window.innerWidth <= 980) {
+      e.preventDefault();
+      var dropdown = dropdownToggle.closest('.nav-dropdown');
+      var menu = dropdown.querySelector('.nav-dropdown-menu');
+      if (menu) {
+        var isOpen = menu.classList.toggle('is-open');
+        dropdownToggle.classList.toggle('is-active', isOpen);
+      }
+      return;
+    }
+
     var toggle = e.target.closest('.nav-toggle');
     if (toggle) {
       var nav = document.getElementById('primary-nav');

@@ -32,17 +32,29 @@
 <body>
   <header class="topnav" data-od-id="topnav">
     <div class="container topnav-inner">
-      <a class="brand-lockup" href="#home" aria-label="ACIC-JPIF home">
+      <a class="brand-lockup" href="index.html#home" aria-label="ACIC-JPIF home">
         <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" width="280" height="140" />
       </a>
       <nav id="primary-nav" class="navlinks" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="program-detail.html">Incubation Programs</a>
         <a href="mentors.html">Mentors</a>
-        <a href="support-cell.html">Startup Hub</a>
-        <a href="community-hub.html">Community Hub</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            Hubs
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align:middle; margin-left:2px;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="support-cell.html">Startup Hub</a>
+            <a href="community-hub.html">Community Hub</a>
+            <a href="https://www.deasra.in/" target="_blank" rel="noopener noreferrer">Training Hub</a>
+          </div>
+        </div>
       </nav>
-      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <div class="topnav-logos" aria-label="Host Institute Ecosystem Partners">
+        <img src="Images/Partners/Niti%20Aayog.png" alt="NITI Aayog (AIM) logo" class="nav-logo" />
+        <img src="Images/DBL%20LOGO_page-0001.jpg" alt="Desai Brothers Ltd (DBL) logo" class="nav-logo" />
+      </div>
       <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -86,10 +98,10 @@
           <div class="grid-2">
             <div class="card">
               <h3>ACIC-JPIF</h3>
-              <p style="margin-top:12px; line-height: 1.7;">ACIC – Jnana Prabodhini Innovation Foundation (ACIC-JPIF) is a Section 8 company promoted by Jnana Prabodhini in collaboration with the Atal Innovation Mission (AIM), NITI Aayog, Government of India. The initiative aims to establish an Atal Community Incubation Centre (ACIC) focused on nurturing grassroots innovators, rural entrepreneurs, and community-led enterprises from underserved regions.</p>
-              <p style="margin-top:12px; line-height: 1.7; font-weight: 500; color: var(--accent-text);">The proposed ACIC will serve as a catalyst for transforming innovative ideas into sustainable enterprises that create measurable social and economic impact.</p>
+              <p style="margin-top:12px; line-height: 1.7;">Jnana Prabodhini Innovation Foundation is a Section 8 company promoted by Jnana Prabodhini in collaboration with the Atal Innovation Mission (AIM), NITI Aayog, Government of India. The Atal Community Innovation Center (ACIC) initiative aims to focus on nurturing grassroots innovators, rural entrepreneurs, and community-led enterprises from underserved regions.</p>
+              <p style="margin-top:12px; line-height: 1.7; font-weight: 500; color: var(--accent-text);">ACIC-JPIF will serve as a catalyst for transforming innovative ideas into sustainable enterprises that create measurable social and economic impact.</p>
             </div>
-            <div class="card" style="background: var(--navy-soft);">
+            <div class="card">
               <h3>About Jnana Prabodhini</h3>
               <p style="margin-top:12px; line-height: 1.7;">Jnana Prabodhini is a reputed social institution with over six decades of experience in rural development, entrepreneurship development, women empowerment, biotechnology, agriculture, and natural resource management across Maharashtra.</p>
             </div>
@@ -218,24 +230,24 @@
         <div>
           <h3 style="color: var(--accent-text); font-size: 20px; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Foundation Team</h3>
           <div class="team-grid">
-            <div class="member-card"><h4>Girish Rao</h4><p>Foundation Leader</p></div>
-            <div class="member-card"><h4>Manoj Rao</h4><p>Foundation Leader</p></div>
-            <div class="member-card"><h4>Subhash Rao</h4><p>Foundation Leader</p></div>
-            <div class="member-card"><h4>Yeshwant Rao Limaye</h4><p>Foundation Leader</p></div>
-            <div class="member-card"><h4>Sangeeta tai Kulkarni</h4><p>Foundation Leader</p></div>
+            <div class="member-card"><h4>Dr. Girish Bapat</h4><p>Foundation Leader</p></div>
+            <div class="member-card"><h4>Mr. Manoj Devalekar</h4><p>Foundation Leader</p></div>
+            <div class="member-card"><h4>Mr. Subhash Deshpande</h4><p>Foundation Leader</p></div>
+            <div class="member-card"><h4>Mr. Yashwant Limaye</h4><p>Foundation Leader</p></div>
+            <div class="member-card"><h4>Mrs. Sangeeta Kulkarni</h4><p>Foundation Leader</p></div>
           </div>
         </div>
 
         <div style="margin-top: 40px;">
           <h3 style="color: var(--green-text); font-size: 20px; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Board of Directors</h3>
           <div class="team-grid">
-            <div class="member-card"><h4>Yeshwant Rao Limaye</h4><p>Board Member</p></div>
-            <div class="member-card"><h4>Sangeeta Tai Kulkarni</h4><p>Board Member</p></div>
+            <div class="member-card"><h4>Mr. Yashwant Limaye</h4><p>Board Member</p></div>
+            <div class="member-card"><h4>Mrs. Sangeeta Kulkarni</h4><p>Board Member</p></div>
             <div class="member-card"><h4>Dr. Omkar Gurjar</h4><p>Board Member</p></div>
-            <div class="member-card"><h4>Dr. Yogesh Brahmankar</h4><p>Board Member</p></div>
+            <div class="member-card"><h4>Mr. Yogesh Brahmankar</h4><p>Board Member</p></div>
             <div class="member-card"><h4>Dr. Shantanu Pendse</h4><p>Board Member</p></div>
             <div class="member-card"><h4>Mr. Amit Parale</h4><p>Board Member</p></div>
-            <div class="member-card"><h4>Mr. Narendra Deshmukh</h4><p>Board Member</p></div>
+            <div class="member-card"><h4>Dr. Narendra Deshmukh</h4><p>Board Member</p></div>
             <div class="member-card"><h4>Mr. Pradeep Paranjpe</h4><p>Board Member</p></div>
           </div>
         </div>
@@ -298,6 +310,64 @@
           <div id="contact-success" style="display:none; text-align:center; padding: 20px 0; color: var(--green-text);">
             <h4 style="font-weight:700; margin-bottom:8px;">Thank you!</h4>
             <p style="font-size:14px;">Your message has been recorded. Our team will get back to you shortly.</p>
+          </div>
+        </div>
+    </section>
+
+    <!-- Onboarding / Apply Section -->
+    <section class="section join-ecosystem-section" id="join-ecosystem" data-od-id="join-ecosystem">
+      <div class="container">
+        <div class="section-head text-center" style="text-align: center; justify-content: center; margin-bottom: 50px;">
+          <div style="max-width: 720px; margin: 0 auto;">
+            <p class="eyebrow">engagement portals</p>
+            <h2>Join Our Startup & Innovation Ecosystem</h2>
+            <p class="lead">Select your engagement path to connect with domain experts, apply for structured incubation, or utilize our support cells.</p>
+          </div>
+        </div>
+        <div class="grid-3" style="margin-top: 30px;">
+          <!-- Card 1: Mentor -->
+          <div class="card portal-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 18px; border: 1px solid var(--border); transition: all 0.3s ease;">
+            <div>
+              <div class="portal-icon" style="width: 48px; height: 48px; border-radius: 12px; background: var(--saffron-soft); color: var(--accent-text); display: grid; place-items: center; font-size: 20px; font-weight: 750; margin-bottom: 20px;">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3 style="font-size: 20px; margin-bottom: 8px; color: var(--fg);">Join Mentor Pool</h3>
+              <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px;">Share your technical, financial, or strategic planning expertise with grassroots rural enterprises and student innovators.</p>
+            </div>
+            <a href="mentor-onboarding.html" class="btn btn-secondary" style="width: 100%; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+              Register as Mentor
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Card 2: Incubation -->
+          <div class="card portal-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 18px; border: 1px solid var(--border); transition: all 0.3s ease; background: radial-gradient(circle at 100% 0%, var(--green-soft), transparent 60%), var(--surface);">
+            <div>
+              <div class="portal-icon" style="width: 48px; height: 48px; border-radius: 12px; background: var(--green-soft); color: var(--green-text); display: grid; place-items: center; font-size: 20px; font-weight: 750; margin-bottom: 20px;">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <h3 style="font-size: 20px; margin-bottom: 8px; color: var(--fg);">Join Incubation Pool</h3>
+              <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px;">Apply for physical workspace access, testing labs/makerspaces, mentorship, market linkages, and direct seed funding.</p>
+            </div>
+            <a href="program-detail.html" class="btn btn-green" style="width: 100%; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+              Apply for Incubation
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Card 3: Services -->
+          <div class="card portal-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 18px; border: 1px solid var(--border); transition: all 0.3s ease;">
+            <div>
+              <div class="portal-icon" style="width: 48px; height: 48px; border-radius: 12px; background: var(--navy-soft); color: var(--accent-text); display: grid; place-items: center; font-size: 20px; font-weight: 750; margin-bottom: 20px;">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h3 style="font-size: 20px; margin-bottom: 8px; color: var(--fg);">Join Services Pool</h3>
+              <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px;">Access legal setups, bookkeeping/CS filing assistance, user validation bootcamps, and scientific consulting support.</p>
+            </div>
+            <a href="support-cell.html" class="btn btn-secondary" style="width: 100%; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+              Request Services
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </div>
       </div>

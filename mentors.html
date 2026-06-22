@@ -58,10 +58,22 @@
         <a href="index.html">Home</a>
         <a href="program-detail.html">Incubation Programs</a>
         <a href="mentors.html" class="active">Mentors</a>
-        <a href="support-cell.html">Startup Hub</a>
-        <a href="community-hub.html">Community Hub</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            Hubs
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align:middle; margin-left:2px;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="support-cell.html">Startup Hub</a>
+            <a href="community-hub.html">Community Hub</a>
+            <a href="https://www.deasra.in/" target="_blank" rel="noopener noreferrer">Training Hub</a>
+          </div>
+        </div>
       </nav>
-      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <div class="topnav-logos" aria-label="Host Institute Ecosystem Partners">
+        <img src="Images/Partners/Niti%20Aayog.png" alt="NITI Aayog (AIM) logo" class="nav-logo" />
+        <img src="Images/DBL%20LOGO_page-0001.jpg" alt="Desai Brothers Ltd (DBL) logo" class="nav-logo" />
+      </div>
       <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -84,7 +96,7 @@
     <section class="section" id="mentors">
       <div class="container">
         <div class="about-tabs" role="tablist" aria-label="Mentor expertise category selector" style="margin-bottom: 40px;">
-          <button type="button" class="about-tab-btn active" role="tab" id="m-tab-all" onclick="filterMentors('all')">All Specializations</button>
+          <button type="button" class="about-tab-btn active" role="tab" id="m-tab-all" onclick="filterMentors('all')">All</button>
           <button type="button" class="about-tab-btn" role="tab" id="m-tab-legal" onclick="filterMentors('legal')">Legal & Compliance</button>
           <button type="button" class="about-tab-btn" role="tab" id="m-tab-finance" onclick="filterMentors('finance')">Finance & Compliance</button>
           <button type="button" class="about-tab-btn" role="tab" id="m-tab-marketing" onclick="filterMentors('marketing')">Marketing & Branding</button>
@@ -96,114 +108,174 @@
         <div class="mentor-grid" id="mentor-wrapper">
           <!-- Legal -->
           <div class="mentor-card" data-cat="legal">
-            <h4>Bhate and Ponkshe Associates</h4>
-            <span class="meta">Legal / Patenting</span>
-            <p>Providing expert advisory on patent filings, IP rights protection, and entity registrations.</p>
+            <div class="mentor-avatar">BP</div>
+            <div class="mentor-info">
+              <h4>Bhate and Ponkshe Associates</h4>
+              <span class="meta">Legal / Patenting</span>
+              <p>Providing expert advisory on patent filings, IP rights protection, and entity registrations.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="legal">
-            <h4>Ms. Rashmi Hingmire</h4>
-            <span class="meta">Legal / Patenting</span>
-            <p>Specializes in legal agreements, entity structured setups, and patent pathways.</p>
+            <div class="mentor-avatar">RH</div>
+            <div class="mentor-info">
+              <h4>Ms. Rashmi Hingmire</h4>
+              <span class="meta">Legal / Patenting</span>
+              <p>Specializes in legal agreements, entity structured setups, and patent pathways.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="legal">
-            <h4>Ms. Pallavi Salunke</h4>
-            <span class="meta">Company Compliance</span>
-            <p>Handles annual filings, MCA audits, corporate governance structure, and registrar compliance.</p>
+            <div class="mentor-avatar">PS</div>
+            <div class="mentor-info">
+              <h4>Ms. Pallavi Salunke</h4>
+              <span class="meta">Company Compliance</span>
+              <p>Handles annual filings, MCA audits, corporate governance structure, and registrar compliance.</p>
+            </div>
           </div>
 
           <!-- Finance -->
           <div class="mentor-card" data-cat="finance">
-            <h4>Ms. Sharmishtha Chiplunkar</h4>
-            <span class="meta">Finance and Revenue</span>
-            <p>Financial projections modeling, audit preparation, and corporate accounts strategy.</p>
+            <div class="mentor-avatar">SC</div>
+            <div class="mentor-info">
+              <h4>Ms. Sharmishtha Chiplunkar</h4>
+              <span class="meta">Finance and Revenue</span>
+              <p>Financial projections modeling, audit preparation, and corporate accounts strategy.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="finance">
-            <h4>Mr. Kishor Jadhav</h4>
-            <span class="meta">Finance and Revenue</span>
-            <p>Advising on bookkeeping, local cooperative tax systems, and working capital loans.</p>
+            <div class="mentor-avatar">KJ</div>
+            <div class="mentor-info">
+              <h4>Mr. Kishor Jadhav</h4>
+              <span class="meta">Finance and Revenue</span>
+              <p>Advising on bookkeeping, local cooperative tax systems, and working capital loans.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="finance">
-            <h4>Mr. Sagar Kanade</h4>
-            <span class="meta">Finance and Revenue</span>
-            <p>Strategic revenue tracking, tax compliance and project grant budgeting.</p>
+            <div class="mentor-avatar">SK</div>
+            <div class="mentor-info">
+              <h4>Mr. Sagar Kanade</h4>
+              <span class="meta">Finance and Revenue</span>
+              <p>Strategic revenue tracking, tax compliance and project grant budgeting.</p>
+            </div>
           </div>
 
           <!-- Marketing -->
           <div class="mentor-card" data-cat="marketing">
-            <h4>Ms. Bhargavi Kanade</h4>
-            <span class="meta">Marketing / Branding</span>
-            <p>Product brand storytelling, packaging design checks, and retail placement systems.</p>
+            <div class="mentor-avatar">BK</div>
+            <div class="mentor-info">
+              <h4>Ms. Bhargavi Kanade</h4>
+              <span class="meta">Marketing / Branding</span>
+              <p>Product brand storytelling, packaging design checks, and retail placement systems.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="marketing">
-            <h4>Mr. Chandrasekhar Chincholkar</h4>
-            <span class="meta">Marketing / Branding</span>
-            <p>Rural branding setups, brand positioning, and regional distribution routes.</p>
+            <div class="mentor-avatar">CC</div>
+            <div class="mentor-info">
+              <h4>Mr. Chandrasekhar Chincholkar</h4>
+              <span class="meta">Marketing / Branding</span>
+              <p>Rural branding setups, brand positioning, and regional distribution routes.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="marketing">
-            <h4>Mr. Raghavendra Ponkshe</h4>
-            <span class="meta">Marketing / Branding</span>
-            <p>Corporate advertising partnerships and local customer acquisition strategies.</p>
+            <div class="mentor-avatar">RP</div>
+            <div class="mentor-info">
+              <h4>Mr. Raghavendra Ponkshe</h4>
+              <span class="meta">Marketing / Branding</span>
+              <p>Corporate advertising partnerships and local customer acquisition strategies.</p>
+            </div>
           </div>
 
           <!-- Business Planning -->
           <div class="mentor-card" data-cat="business">
-            <h4>Mr. Ketan Joshi</h4>
-            <span class="meta">Business Planning and Development</span>
-            <p>Scaling small operations, business canvas modeling, and operational scaling steps.</p>
+            <div class="mentor-avatar">KJ</div>
+            <div class="mentor-info">
+              <h4>Mr. Ketan Joshi</h4>
+              <span class="meta">Business Planning and Development</span>
+              <p>Scaling small operations, business canvas modeling, and operational scaling steps.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="business">
-            <h4>Mr. Rohan Panse</h4>
-            <span class="meta">Business Planning and Development</span>
-            <p>Project roadmap building, corporate connect programs, and investment readiness.</p>
+            <div class="mentor-avatar">RP</div>
+            <div class="mentor-info">
+              <h4>Mr. Rohan Panse</h4>
+              <span class="meta">Business Planning and Development</span>
+              <p>Project roadmap building, corporate connect programs, and investment readiness.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="business">
-            <h4>Mr. Gireendra Kasamalkar</h4>
-            <span class="meta">Business Planning and Development</span>
-            <p>Strategic business scale-up, technology transfer operations, and investor pitching.</p>
+            <div class="mentor-avatar">GK</div>
+            <div class="mentor-info">
+              <h4>Mr. Gireendra Kasamalkar</h4>
+              <span class="meta">Business Planning and Development</span>
+              <p>Strategic business scale-up, technology transfer operations, and investor pitching.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="business">
-            <h4>Mr. Suhas Kulkarni</h4>
-            <span class="meta">Business Planning and Development</span>
-            <p>Enterprise growth planning, resource mapping, and local government connections.</p>
+            <div class="mentor-avatar">SK</div>
+            <div class="mentor-info">
+              <h4>Mr. Suhas Kulkarni</h4>
+              <span class="meta">Business Planning and Development</span>
+              <p>Enterprise growth planning, resource mapping, and local government connections.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="business">
-            <h4>Mr. Pravin Patil</h4>
-            <span class="meta">Business Planning and Development</span>
-            <p>Industrial linkages, project feasibility evaluation, and rural hub development.</p>
+            <div class="mentor-avatar">PP</div>
+            <div class="mentor-info">
+              <h4>Mr. Pravin Patil</h4>
+              <span class="meta">Business Planning and Development</span>
+              <p>Industrial linkages, project feasibility evaluation, and rural hub development.</p>
+            </div>
           </div>
 
           <!-- Market Linkages -->
           <div class="mentor-card" data-cat="market">
-            <h4>NYOM</h4>
-            <span class="meta">Market Linkages</span>
-            <p>Establishing commercial retail partnerships and supply chain logistics connections.</p>
+            <div class="mentor-avatar">NY</div>
+            <div class="mentor-info">
+              <h4>NYOM</h4>
+              <span class="meta">Market Linkages</span>
+              <p>Establishing commercial retail partnerships and supply chain logistics connections.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="market">
-            <h4>Codex Solutions</h4>
-            <span class="meta">Market Linkages & IT</span>
-            <p>E-commerce setup, digital market channels, and IT integrations advisory.</p>
+            <div class="mentor-avatar">CS</div>
+            <div class="mentor-info">
+              <h4>Codex Solutions</h4>
+              <span class="meta">Market Linkages & IT</span>
+              <p>E-commerce setup, digital market channels, and IT integrations advisory.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="market">
-            <h4>The Bamboo Move</h4>
-            <span class="meta">Market Linkages & Materials</span>
-            <p>Focuses on commercial bamboo products marketing, design, and wholesale networks.</p>
+            <div class="mentor-avatar">BM</div>
+            <div class="mentor-info">
+              <h4>The Bamboo Move</h4>
+              <span class="meta">Market Linkages & Materials</span>
+              <p>Focuses on commercial bamboo products marketing, design, and wholesale networks.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="market">
-            <h4>Nature’s Root Herbal Co.</h4>
-            <span class="meta">Market Linkages & Ayurvedic</span>
-            <p>Ayurvedic formulations processing networks and herbal product marketing channels.</p>
+            <div class="mentor-avatar">NR</div>
+            <div class="mentor-info">
+              <h4>Nature’s Root Herbal Co.</h4>
+              <span class="meta">Market Linkages & Ayurvedic</span>
+              <p>Ayurvedic formulations processing networks and herbal product marketing channels.</p>
+            </div>
           </div>
 
           <!-- Design Thinking -->
           <div class="mentor-card" data-cat="design">
-            <h4>Dr. Shweta Nirgudkar</h4>
-            <span class="meta">Design Thinking Experts</span>
-            <p>User-centric concept modeling, user research guides, and value proposition checks.</p>
+            <div class="mentor-avatar">SN</div>
+            <div class="mentor-info">
+              <h4>Dr. Shweta Nirgudkar</h4>
+              <span class="meta">Design Thinking Experts</span>
+              <p>User-centric concept modeling, user research guides, and value proposition checks.</p>
+            </div>
           </div>
           <div class="mentor-card" data-cat="design">
-            <h4>Dr. Nachiket Thakur</h4>
-            <span class="meta">Design Thinking Experts</span>
-            <p>Empathy mappings, rapid industrial prototyping, and maker setup optimization.</p>
+            <div class="mentor-avatar">NT</div>
+            <div class="mentor-info">
+              <h4>Dr. Nachiket Thakur</h4>
+              <span class="meta">Design Thinking Experts</span>
+              <p>Empathy mappings, rapid industrial prototyping, and maker setup optimization.</p>
+            </div>
           </div>
         </div>
       </div>

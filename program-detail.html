@@ -295,10 +295,22 @@
         <a href="index.html">Home</a>
         <a href="program-detail.html" class="active">Incubation Programs</a>
         <a href="mentors.html">Mentors</a>
-        <a href="support-cell.html">Startup Hub</a>
-        <a href="community-hub.html">Community Hub</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            Hubs
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align:middle; margin-left:2px;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="support-cell.html">Startup Hub</a>
+            <a href="community-hub.html">Community Hub</a>
+            <a href="https://www.deasra.in/" target="_blank" rel="noopener noreferrer">Training Hub</a>
+          </div>
+        </div>
       </nav>
-      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <div class="topnav-logos" aria-label="Host Institute Ecosystem Partners">
+        <img src="Images/Partners/Niti%20Aayog.png" alt="NITI Aayog (AIM) logo" class="nav-logo" />
+        <img src="Images/DBL%20LOGO_page-0001.jpg" alt="Desai Brothers Ltd (DBL) logo" class="nav-logo" />
+      </div>
       <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -327,9 +339,8 @@
 
         <div class="prog-tabs" role="tablist" aria-label="Incubation programs selection">
           <button type="button" class="prog-tab-btn active" role="tab" id="p-tab-pre" onclick="switchProgTab('pre')">Pre-Incubation</button>
-          <button type="button" class="prog-tab-btn" role="tab" id="p-tab-physical" onclick="switchProgTab('physical')">Physical Incubation</button>
-          <button type="button" class="prog-tab-btn" role="tab" id="p-tab-virtual" onclick="switchProgTab('virtual')">Virtual Incubation</button>
-          <button type="button" class="prog-tab-btn" role="tab" id="p-tab-journey" onclick="switchProgTab('journey')">Eligibility & Selection Journey</button>
+          <button type="button" class="prog-tab-btn" role="tab" id="p-tab-physical" onclick="switchProgTab('physical')">Incubation</button>
+          <button type="button" class="prog-tab-btn" role="tab" id="p-tab-journey" onclick="switchProgTab('journey')">Startup Journey @ ACIC-JPIF</button>
         </div>
 
         <!-- 1. Pre-Incubation Program -->
@@ -343,7 +354,7 @@
               <ul class="feature-list">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Foster Innovation Thinking & Promote Entrepreneurship Culture.</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Identify High-Potential Ideas & Build Core Capabilities.</span></li>
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Prepare Participants for active Physical or Virtual Incubation.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Prepare Participants for active Incubation.</span></li>
               </ul>
             </div>
 
@@ -364,11 +375,11 @@
           </div>
         </div>
 
-        <!-- 2. Physical Incubation Program -->
+        <!-- 2. Incubation Program -->
         <div id="prog-physical" class="prog-pane" role="tabpanel" aria-labelledby="p-tab-physical">
           <div class="card" style="margin-bottom: 24px;">
-            <h3>Physical Incubation (10 - 12 Months)</h3>
-            <p style="margin-top:10px; line-height: 1.7;"><strong>Transforming Ideas into Sustainable Enterprises.</strong> The Physical Incubation Program is designed for innovators, startups, community entrepreneurs, SHGs, FPOs, rural youth, researchers, and enterprises requiring intensive handholding and access to physical infrastructure in Pune and Nigdi. The program focuses on nurturing innovations from the idea stage to commercialization.</p>
+            <h3>Incubation Program (10 - 12 Months)</h3>
+            <p style="margin-top:10px; line-height: 1.7;"><strong>Transforming Ideas into Sustainable Enterprises.</strong> The Incubation Program is designed for innovators, startups, community entrepreneurs, SHGs, FPOs, rural youth, researchers, and enterprises requiring intensive handholding and access to physical infrastructure in Pune and Nigdi. The program focuses on nurturing innovations from the idea stage to commercialization.</p>
           </div>
 
           <h3 style="margin-top: 30px; margin-bottom: 15px; font-size:22px;">Incubation Levels</h3>
@@ -480,38 +491,7 @@
           </div>
         </div>
 
-        <!-- 3. Virtual Incubation Program -->
-        <div id="prog-virtual" class="prog-pane" role="tabpanel" aria-labelledby="p-tab-virtual">
-          <div class="grid-2">
-            <div class="card">
-              <h3>Virtual Incubation (3 & 6 Months Tracks)</h3>
-              <p style="margin-top:10px; line-height: 1.7;"><strong>Supporting Innovators Beyond Geographical Boundaries.</strong> Designed for innovators and startups who cannot regularly access the incubation center physically due to distance or operational constraints. The program provides structured incubation support through digital platforms while maintaining access to mentors, experts, and business support services.</p>
-              
-              <h4 style="margin-top: 20px; font-weight:700;">Ideal For:</h4>
-              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
-                <span class="pill">Rural Innovators</span>
-                <span class="pill">Student Entrepreneurs</span>
-                <span class="pill">Early-Stage Startups</span>
-                <span class="pill">Researchers</span>
-                <span class="pill">Working Professionals</span>
-                <span class="pill">Women Entrepreneurs</span>
-                <span class="pill">Community-Based Enterprises</span>
-              </div>
-            </div>
-
-            <div class="card" style="background:var(--green-soft);">
-              <h3>Key Program Features</h3>
-              <ul style="padding-left:20px; display:grid; gap:14px; margin-top:15px; font-size:14px; color:var(--fg);">
-                <li><strong>Mentoring Support:</strong> One-on-One Mentorship Sessions, Technical Guidance, Business Strategy Reviews, and Milestone Progress Monitoring.</li>
-                <li><strong>Capacity Building:</strong> Online Workshops, Design Thinking Programs, Business Planning Sessions, and Market Research Training.</li>
-                <li><strong>Expert Access:</strong> Instant query routing to Sector Specialists, Technical Experts, Industry Mentors, and Legal & Financial Advisors.</li>
-                <li><strong>Market Linkages:</strong> Customer Introductions, Industry Networking, Market Intelligence, and Partner Connect Programs.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Eligibility & Selection Journey -->
+        <!-- 4. Startup Journey @ ACIC-JPIF -->
         <div id="prog-journey" class="prog-pane" role="tabpanel" aria-labelledby="p-tab-journey">
           <div class="grid-2">
             <div class="card">
@@ -635,8 +615,7 @@
                   <div class="form-group">
                     <label for="trackSelect">Preferred Incubation Track *</label>
                     <select id="trackSelect" class="form-control" required>
-                      <option value="physical">Physical Incubation Track (10-12 Months)</option>
-                      <option value="virtual">Virtual Incubation Track (3/6 Months)</option>
+                      <option value="physical">Incubation Track (10-12 Months)</option>
                       <option value="pre-incubation">Pre-Incubation Track</option>
                     </select>
                   </div>

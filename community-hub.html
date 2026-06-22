@@ -185,10 +185,22 @@
         <a href="index.html">Home</a>
         <a href="program-detail.html">Incubation Programs</a>
         <a href="mentors.html">Mentors</a>
-        <a href="support-cell.html">Startup Hub</a>
-        <a href="community-hub.html" class="active">Community Hub</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle active" type="button" aria-expanded="false">
+            Hubs
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="vertical-align:middle; margin-left:2px;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="support-cell.html">Startup Hub</a>
+            <a href="community-hub.html" class="active">Community Hub</a>
+            <a href="https://www.deasra.in/" target="_blank" rel="noopener noreferrer">Training Hub</a>
+          </div>
+        </div>
       </nav>
-      <a class="btn btn-mentor" href="mentor-onboarding.html">Join Mentor Pool</a>
+      <div class="topnav-logos" aria-label="Host Institute Ecosystem Partners">
+        <img src="Images/Partners/Niti%20Aayog.png" alt="NITI Aayog (AIM) logo" class="nav-logo" />
+        <img src="Images/DBL%20LOGO_page-0001.jpg" alt="Desai Brothers Ltd (DBL) logo" class="nav-logo" />
+      </div>
       <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -393,32 +405,25 @@
         <div class="section-head" style="text-align: center; justify-content: center;">
           <div style="max-width:600px;">
             <p class="eyebrow">local assistance</p>
-            <h2>Connect with Your District Cell</h2>
-            <p class="lead">Choose your district below to route your query to the right regional coordinator.</p>
+            <h2>Connect with Pune District Cell</h2>
+            <p class="lead">For any query, registration, or support assistance, please reach out to our primary Pune District cell.</p>
           </div>
         </div>
 
         <div class="support-router">
-          <div class="router-select-box">
-            <label for="district-select" style="font-weight: 700; margin-right: 12px; font-size: 15px;">Select Your District Cell:</label>
-            <select id="district-select" class="form-control" style="width: auto; display: inline-block; min-width: 200px;" onchange="routeCoordinator(this.value)">
-              <option value="pune">Pune District Cell</option>
-              <option value="satara">Satara District Cell</option>
-              <option value="solapur">Solapur District Cell</option>
-            </select>
-          </div>
-
           <!-- Coordinator Output Display -->
           <div class="coordinator-card" id="coord-card">
-            <div class="coord-avatar" id="coord-avatar">RD</div>
+            <div class="coord-avatar" id="coord-avatar">JC</div>
             <div class="coord-details">
               <span class="eyebrow" id="coord-district" style="font-size:10px;">Pune District Coordinator</span>
-              <h3 id="coord-name">Rahul Deshmukh</h3>
-              <p id="coord-desc" style="font-size: 14px; color: var(--muted);">Coordinates agritech incubation entry, local SHG validation workshops, and coordinates mentor physical visits in Pune and Nigdi region.</p>
-              <div class="coord-meta">
-                <span><svg class="coord-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> <strong style="color:var(--fg);" id="coord-phone">+91 98220 12345</strong></span>
-                <span><svg class="coord-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="m22 7-10 6L2 7"/></svg> <a href="mailto:pune.acic@jpif.org" id="coord-email">pune.acic@jpif.org</a></span>
-                <a href="https://wa.me/919822012345" id="coord-wa" class="btn btn-secondary" style="font-size:13px;" aria-label="WhatsApp coordinator">Chat WhatsApp</a>
+              <h3 id="coord-name">Central Help Desk</h3>
+              <p id="coord-desc" style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+                <strong>Address:</strong> Jnana Prabodhini Navnagar Vidyalaya (JPNV), Sector 25, Pradhikaran Road, Nigdi, Pimpri-Chinchwad Pradhikaran, Maharashtra 411044. INDIA.
+              </p>
+              <div class="coord-meta" style="margin-top: 14px;">
+                <span><svg class="coord-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> <strong style="color:var(--fg);" id="coord-phone">+91 93250 41714</strong></span>
+                <span><svg class="coord-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="m22 7-10 6L2 7"/></svg> <a href="mailto:contact@acic-jpif.org" id="coord-email">contact@acic-jpif.org</a></span>
+                <a href="https://wa.me/919325041714" id="coord-wa" class="btn btn-secondary" style="font-size:13px;" aria-label="WhatsApp helpdesk">Chat WhatsApp</a>
               </div>
             </div>
           </div>
@@ -500,58 +505,6 @@
           card.style.display = 'none';
         }
       });
-    }
-
-    const coordinators = {
-      pune: {
-        initials: "RD",
-        district: "Pune District Cell",
-        name: "Rahul Deshmukh",
-        desc: "Coordinates agritech incubation entry, local SHG validation workshops, and coordinates mentor physical visits in Pune and Nigdi region.",
-        phone: "+91 98220 12345",
-        email: "pune.acic@jpif.org"
-      },
-      satara: {
-        initials: "AP",
-        district: "Satara District Cell",
-        name: "Anjali Patil",
-        desc: "Coordinates micro-finance guidance sessions, women entrepreneur setups, and rural handicraft market linkage coordination across Satara.",
-        phone: "+91 98554 67890",
-        email: "satara.acic@jpif.org"
-      },
-      solapur: {
-        initials: "SS",
-        district: "Solapur District Cell",
-        name: "Sanjay Shinde",
-        desc: "Manages Farmer Producer Organization compliance mapping, agricultural logistics, cold storage connections, and irrigation startups.",
-        phone: "+91 97665 43210",
-        email: "solapur.acic@jpif.org"
-      }
-    };
-
-    function routeCoordinator(district) {
-      const card = document.getElementById('coord-card');
-      const data = coordinators[district];
-      
-      if (!data) return;
-
-      // Animate card transition
-      card.style.opacity = 0;
-      card.style.transform = 'translateY(4px)';
-      
-      setTimeout(() => {
-        document.getElementById('coord-avatar').textContent = data.initials;
-        document.getElementById('coord-district').textContent = data.district;
-        document.getElementById('coord-name').textContent = data.name;
-        document.getElementById('coord-desc').textContent = data.desc;
-        document.getElementById('coord-phone').textContent = data.phone;
-        document.getElementById('coord-email').textContent = data.email;
-        document.getElementById('coord-email').setAttribute('href', `mailto:${data.email}`);
-        document.getElementById('coord-wa').setAttribute('href', "https://wa.me/" + data.phone.replace(/[^0-9]/g, ""));
-        
-        card.style.opacity = 1;
-        card.style.transform = 'translateY(0)';
-      }, 200);
     }
   </script>
   <script src="app.js"></script>
