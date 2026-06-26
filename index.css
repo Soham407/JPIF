@@ -86,7 +86,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   padding-inline: var(--gutter);
 }
 .section { padding-block: clamp(58px, 8vw, 108px); }
-.section + .section { border-top: 1px solid var(--border); }
+.section + .section { border-top: none; }
 .hero + .section { border-top: none; }
 .eyebrow {
   margin-bottom: 16px;
@@ -1203,3 +1203,63 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
     background-size: auto 212px;
   }
 }
+
+/* ==================== BACKGROUND DECORATION SYSTEM ==================== */
+.section {
+  position: relative;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.decor-left,
+.decor-right {
+  overflow: hidden;
+}
+
+.decor-left::before,
+.decor-right::before {
+  content: "";
+  position: absolute;
+  top: clamp(20px, 3vw, 50px);
+  width: clamp(140px, 16vw, 280px);
+  height: clamp(140px, 16vw, 280px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.decor-left::before {
+  left: 2%;
+  opacity: 0.07;
+}
+
+.decor-right::before {
+  right: 2%;
+  opacity: 0.07;
+}
+
+@media (min-width: 1440px) {
+  .decor-left::before {
+    left: 4%;
+    opacity: 0.12;
+  }
+  .decor-right::before {
+    right: 4%;
+    opacity: 0.12;
+  }
+}
+
+.decor-el-1::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-01.svg"); }
+.decor-el-2::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-02.svg"); }
+.decor-el-3::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-03.svg"); }
+.decor-el-4::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-04.svg"); }
+.decor-el-5::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-05.svg"); }
+.decor-el-6::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-06.svg"); }
+.decor-el-7::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-07.svg"); }
+.decor-el-8::before { background-image: url("Images/element%20svg/LOGO%20ELEMENTS-08.svg"); }
+
