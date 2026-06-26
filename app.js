@@ -117,5 +117,36 @@
         el.classList.add('is-visible');
       });
     }
+
+    // Intersection Observer for background section ornaments
+    var ornamentSelectors = '.decor-left, .decor-right';
+    document.querySelectorAll(ornamentSelectors).forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      var inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inViewport) {
+        el.classList.add('decor-visible');
+      } else {
+        el.classList.add('decor-animate');
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      var ornamentObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('decor-visible');
+            ornamentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.decor-animate').forEach(function (el) {
+        ornamentObserver.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.decor-animate').forEach(function (el) {
+        el.classList.add('decor-visible');
+      });
+    }
   });
 })();
