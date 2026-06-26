@@ -508,10 +508,10 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
 .preview-cell { min-height: 48px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
 
 .warli-band {
-  min-height: 180px;
+  min-height: 130px;
   background-image: url("Images/figures.png");
   background-repeat: repeat-x;
-  background-size: auto 148px;
+  background-size: auto 112px;
   background-position: center bottom;
   border-bottom: 1px solid var(--border);
   animation: scrollWarli 150s linear infinite;
@@ -667,7 +667,7 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   .track { grid-template-columns: auto 1fr; }
   .field-grid { grid-template-columns: 1fr; }
   .mentor-table th:nth-child(2), .mentor-table td:nth-child(2) { display: none; }
-  .warli-band { min-height: 130px; background-size: auto 112px; }
+  .warli-band { min-height: 90px; background-size: auto 76px; }
   .partner-slots { justify-content: center; gap: 12px; }
   
   /* Stacking layout for mobile screens */
@@ -1153,8 +1153,8 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
     height: 39px;
   }
   .warli-band {
-    min-height: 220px;
-    background-size: auto 178px;
+    min-height: 180px;
+    background-size: auto 148px;
   }
 }
 
@@ -1199,8 +1199,8 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
     height: 42px;
   }
   .warli-band {
-    min-height: 260px;
-    background-size: auto 212px;
+    min-height: 220px;
+    background-size: auto 178px;
   }
 }
 
