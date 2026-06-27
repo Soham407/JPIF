@@ -59,6 +59,11 @@
       justify-content: center;
       align-items: center;
       z-index: 2;
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    #presentation-wrapper.fade-out-content {
+      opacity: 0;
     }
 
     /* Video styling */
@@ -433,7 +438,7 @@
         <h2 class="outro-title">Welcome to ACIC-JPIF</h2>
         <p class="outro-subtitle">Nurturing rural innovators, students, and community-led enterprises to scale up sustainable innovations across regions.</p>
         
-        <a href="index.html" class="enter-btn">
+        <a href="index.html" class="enter-btn" id="enter-portal-btn">
           Enter Main Portal
           <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path></svg>
         </a>
@@ -571,6 +576,22 @@
           showControls();
         });
       }
+
+      const enterBtn = document.getElementById('enter-portal-btn');
+      const wrapper = document.getElementById('presentation-wrapper');
+
+      // Handle smooth page exit transition to index.html
+      enterBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // Add class to fade out all content inside presentation wrapper
+        wrapper.classList.add('fade-out-content');
+        
+        // Wait for fade transition, then redirect
+        setTimeout(function () {
+          window.location.href = enterBtn.getAttribute('href');
+        }, 800);
+      });
 
       // Event Listeners
       startBtn.addEventListener('click', startPresentation);
