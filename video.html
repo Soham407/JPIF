@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACIC-JPIF Event Presentation</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #07080a;
+      --fg: #f3f4f6;
+      --muted: #9ca3af;
+      --accent: oklch(63% 0.18 42); /* Saffron */
+      --green: oklch(49% 0.13 148); /* Green */
+      --accent-text: oklch(48% 0.16 42);
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Ambient background glows for event screen feel */
+    .ambient-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(220, 100, 30, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(10, 150, 80, 0.04) 0%, transparent 45%);
+    }
+
+    #presentation-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    /* Video styling */
+    #event-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Keeps 16:9 aspect ratio clean on big screens */
+      background-color: #000;
+      opacity: 0;
+      transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 5;
+    }
+
+    #event-video.is-active {
+      opacity: 1;
+    }
+
+    #event-video.dimmed {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Launch Screen */
+    #launch-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95), #07080a 100%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 1s ease-out, visibility 1s;
+    }
+
+    #launch-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .brand-logos-launch {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 40px;
+      animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .brand-logos-launch img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+
+    .brand-logos-launch .separator {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .launch-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: #fff;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 0.1s;
+    }
+
+    .launch-subtitle {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+      line-height: 1.6;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 0.2s;
+    }
+
+    /* Start Button with Event Ripple Effect */
+    .start-btn {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent) 0%, #d95d1e 100%);
+      padding: 18px 40px;
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(220, 100, 30, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s, box-shadow 0.3s;
+      outline: none;
+      z-index: 21;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      animation: scalePulse 2s infinite ease-in-out, fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 0.3s;
+    }
+
+    .start-btn:hover {
+      box-shadow: 0 15px 40px rgba(220, 100, 30, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .start-btn:active {
+      transform: translateY(1px);
+    }
+
+    .start-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Outro / Interactive End Screen */
+    #outro-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(10, 15, 25, 0.98) 0%, #050608 100%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    #outro-screen.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .outro-card {
+      max-width: 680px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(25px);
+      padding: 60px 40px;
+      border-radius: 32px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateY(20px);
+      transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #outro-screen.is-active .outro-card {
+      transform: translateY(0);
+    }
+
+    .brand-logos-outro {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .brand-logos-outro img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+
+    .brand-logos-outro .separator {
+      width: 1px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .outro-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .outro-subtitle {
+      font-size: clamp(13px, 1.5vw, 16px);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+
+    /* Enter Homepage Button */
+    .enter-btn {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green) 0%, #057a55 100%);
+      padding: 16px 44px;
+      border: none;
+      border-radius: 99px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(5, 122, 85, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+      transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .enter-btn:hover {
+      box-shadow: 0 12px 30px rgba(5, 122, 85, 0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .enter-btn:active {
+      transform: translateY(1px);
+    }
+
+    .enter-btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+
+    .enter-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Control options overlay during playback */
+    .control-overlay {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 12px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .control-overlay.is-visible {
+      opacity: 1;
+    }
+
+    .action-icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .action-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .action-icon-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Outro text link to replay */
+    .replay-link {
+      margin-top: 30px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .replay-link:hover {
+      color: #fff;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scalePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div id="presentation-wrapper">
+    
+    <!-- Video Element -->
+    <video id="event-video" preload="auto">
+      <source src="Images/Comp%201.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Top Action Buttons (Skip & Mute Overlay) -->
+    <div id="playback-controls" class="control-overlay">
+      <button class="action-icon-btn" id="mute-toggle-btn" title="Mute/Unmute" aria-label="Toggle mute">
+        <svg id="mute-icon" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zM3 9v6h4l5 5V4L7 9H3z"/></svg>
+      </button>
+      <button class="action-icon-btn" id="skip-btn" title="Skip Video" aria-label="Skip to portal">
+        <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+      </button>
+    </div>
+
+    <!-- 1. Launch Screen -->
+    <section id="launch-screen" aria-label="Launch Presentation">
+      <div class="brand-logos-launch">
+        <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" />
+        <div class="separator"></div>
+        <img src="Images/NITI%20AIM%20logo.png" alt="NITI Aayog (AIM) logo" />
+        <div class="separator"></div>
+        <img src="Images/DBL%20LOGO%20PNG.png" alt="Desai Brothers Ltd (DBL) logo" />
+      </div>
+      <h1 class="launch-title">ACIC-JPIF Presentation</h1>
+      <p class="launch-subtitle">Atal Community Incubation Centre — Jnana Prabodhini Innovation Foundation. Tap below to begin the full-screen playback.</p>
+      <button class="start-btn" id="start-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        Begin Event Presentation
+      </button>
+    </section>
+
+    <!-- 2. Outro Screen -->
+    <section id="outro-screen" aria-label="Outro Details">
+      <div class="outro-card">
+        <div class="brand-logos-outro">
+          <img src="Images/JPIF%20ACIC%20LOGO.png" alt="JPIF ACIC logo" />
+          <div class="separator"></div>
+          <img src="Images/NITI%20AIM%20logo.png" alt="NITI Aayog (AIM) logo" />
+          <div class="separator"></div>
+          <img src="Images/DBL%20LOGO%20PNG.png" alt="Desai Brothers Ltd (DBL) logo" />
+        </div>
+        <h2 class="outro-title">Welcome to ACIC-JPIF</h2>
+        <p class="outro-subtitle">Nurturing rural innovators, students, and community-led enterprises to scale up sustainable innovations across regions.</p>
+        
+        <a href="index.html" class="enter-btn">
+          Enter Main Portal
+          <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path></svg>
+        </a>
+
+        <span class="replay-link" id="replay-btn">Replay Video Presentation</span>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    (function () {
+      const startBtn = document.getElementById('start-btn');
+      const launchScreen = document.getElementById('launch-screen');
+      const outroScreen = document.getElementById('outro-screen');
+      const video = document.getElementById('event-video');
+      const skipBtn = document.getElementById('skip-btn');
+      const muteToggleBtn = document.getElementById('mute-toggle-btn');
+      const muteIcon = document.getElementById('mute-icon');
+      const replayBtn = document.getElementById('replay-btn');
+      const playbackControls = document.getElementById('playback-controls');
+
+      let fadeTriggered = false;
+      let controlHideTimeout = null;
+
+      // Handle Fullscreen request
+      function enterFullscreen() {
+        const docEl = document.documentElement;
+        if (docEl.requestFullscreen) {
+          docEl.requestFullscreen();
+        } else if (docEl.mozRequestFullScreen) { /* Firefox */
+          docEl.mozRequestFullScreen();
+        } else if (docEl.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          docEl.webkitRequestFullscreen();
+        } else if (docEl.msRequestFullscreen) { /* IE/Edge */
+          docEl.msRequestFullscreen();
+        }
+      }
+
+      // Hide cursor and video controls automatically during playback
+      function showControls() {
+        playbackControls.classList.add('is-visible');
+        document.body.style.cursor = 'default';
+        clearTimeout(controlHideTimeout);
+        
+        // Hide after 3 seconds of inactivity unless video is paused
+        if (!video.paused) {
+          controlHideTimeout = setTimeout(hideControls, 3000);
+        }
+      }
+
+      function hideControls() {
+        if (!video.paused && video.currentTime < 25) {
+          playbackControls.classList.remove('is-visible');
+          document.body.style.cursor = 'none';
+        }
+      }
+
+      // Initialize Playback
+      function startPresentation() {
+        // Request fullscreen to make it suitable for event big screens
+        enterFullscreen();
+
+        // Reveal and Play Video
+        video.classList.add('is-active');
+        video.muted = false;
+        
+        // Remove launch screen
+        launchScreen.classList.add('fade-out');
+
+        video.play().then(() => {
+          showControls();
+        }).catch(err => {
+          console.warn("Autoplay with sound blocked. Retrying muted...", err);
+          video.muted = true;
+          updateMuteButtonUI();
+          video.play();
+          showControls();
+        });
+      }
+
+      // Track playback time to dim out at 25 seconds
+      function handleTimeUpdate() {
+        const time = video.currentTime;
+
+        // Start dimming the video at 25 seconds
+        if (time >= 25 && !fadeTriggered) {
+          fadeTriggered = true;
+          video.classList.add('dimmed');
+          outroScreen.classList.add('is-active');
+          hideControls();
+          document.body.style.cursor = 'default';
+        }
+
+        // Pause video at 27 seconds (fully faded) to stop background processing
+        if (time >= 27) {
+          video.pause();
+        }
+      }
+
+      // Skip action
+      function skipToOutro() {
+        video.currentTime = 25; // Triggers the timeupdate block
+        video.classList.add('dimmed');
+        outroScreen.classList.add('is-active');
+        hideControls();
+        document.body.style.cursor = 'default';
+      }
+
+      // Toggle Mute
+      function toggleMute() {
+        video.muted = !video.muted;
+        updateMuteButtonUI();
+        showControls();
+      }
+
+      function updateMuteButtonUI() {
+        if (video.muted) {
+          // Volume Off Icon
+          muteIcon.innerHTML = '<path d="M16.5 12A4.5 4.5 0 0 0 14 8v8a4.48 4.48 0 0 0 2.5-4zm0-7.43v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zM3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM12 4L7 9H3v6h4l5 5V4z"/>';
+        } else {
+          // Volume On Icon
+          muteIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+        }
+      }
+
+      // Replay action
+      function replayPresentation() {
+        fadeTriggered = false;
+        video.currentTime = 0;
+        video.classList.remove('dimmed');
+        outroScreen.classList.remove('is-active');
+        
+        video.play().then(() => {
+          showControls();
+        });
+      }
+
+      // Event Listeners
+      startBtn.addEventListener('click', startPresentation);
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      skipBtn.addEventListener('click', skipToOutro);
+      muteToggleBtn.addEventListener('click', toggleMute);
+      replayBtn.addEventListener('click', replayPresentation);
+
+      // Track mouse movement to show/hide controls
+      document.addEventListener('mousemove', showControls);
+      document.addEventListener('keypress', showControls);
+      
+      // Auto-focus start button for quick keyboard launch
+      startBtn.focus();
+    })();
+  </script>
+</body>
+</html>
