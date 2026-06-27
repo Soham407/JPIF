@@ -520,32 +520,33 @@
         });
       }
 
-      // Track playback time to dim out at 25 seconds
+      const wrapper = document.getElementById('presentation-wrapper');
+
+      // Function to navigate smoothly to index.html
+      function navigateToHome() {
+        wrapper.classList.add('fade-out-content');
+        setTimeout(function () {
+          window.location.href = 'index.html';
+        }, 800);
+      }
+
+      // Track playback time to dim out and redirect at 25 seconds
       function handleTimeUpdate() {
         const time = video.currentTime;
 
-        // Start dimming the video at 25 seconds
+        // Start dimming the video and exit to index.html at 25 seconds
         if (time >= 25 && !fadeTriggered) {
           fadeTriggered = true;
           video.classList.add('dimmed');
-          outroScreen.classList.add('is-active');
           hideControls();
-          document.body.style.cursor = 'default';
-        }
-
-        // Pause video at 27 seconds (fully faded) to stop background processing
-        if (time >= 27) {
-          video.pause();
+          navigateToHome();
         }
       }
 
-      // Skip action
-      function skipToOutro() {
-        video.currentTime = 25; // Triggers the timeupdate block
-        video.classList.add('dimmed');
-        outroScreen.classList.add('is-active');
-        hideControls();
-        document.body.style.cursor = 'default';
+      // Skip action to directly go home
+      function skipToHome() {
+        video.pause();
+        navigateToHome();
       }
 
       // Toggle Mute
@@ -565,40 +566,11 @@
         }
       }
 
-      // Replay action
-      function replayPresentation() {
-        fadeTriggered = false;
-        video.currentTime = 0;
-        video.classList.remove('dimmed');
-        outroScreen.classList.remove('is-active');
-        
-        video.play().then(() => {
-          showControls();
-        });
-      }
-
-      const enterBtn = document.getElementById('enter-portal-btn');
-      const wrapper = document.getElementById('presentation-wrapper');
-
-      // Handle smooth page exit transition to index.html
-      enterBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        // Add class to fade out all content inside presentation wrapper
-        wrapper.classList.add('fade-out-content');
-        
-        // Wait for fade transition, then redirect
-        setTimeout(function () {
-          window.location.href = enterBtn.getAttribute('href');
-        }, 800);
-      });
-
       // Event Listeners
       startBtn.addEventListener('click', startPresentation);
       video.addEventListener('timeupdate', handleTimeUpdate);
-      skipBtn.addEventListener('click', skipToOutro);
+      skipBtn.addEventListener('click', skipToHome);
       muteToggleBtn.addEventListener('click', toggleMute);
-      replayBtn.addEventListener('click', replayPresentation);
 
       // Track mouse movement to show/hide controls
       document.addEventListener('mousemove', showControls);
