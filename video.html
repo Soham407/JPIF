@@ -9,9 +9,11 @@
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
     :root {
-      --bg: #07080a;
-      --fg: #f3f4f6;
-      --muted: #9ca3af;
+      --bg: oklch(97.5% 0.012 75); /* Warm light sand background from index.css */
+      --surface: oklch(99% 0.008 80); /* Card surface from index.css */
+      --fg: oklch(22% 0.05 255); /* Dark charcoal text from index.css */
+      --muted: oklch(46% 0.025 255); /* Dark muted text from index.css */
+      --border: oklch(89% 0.018 75); /* Border color from index.css */
       --accent: oklch(63% 0.18 42); /* Saffron */
       --green: oklch(49% 0.13 148); /* Green */
       --accent-text: oklch(48% 0.16 42);
@@ -45,8 +47,8 @@
       z-index: 1;
       pointer-events: none;
       background: 
-        radial-gradient(circle at 10% 20%, rgba(220, 100, 30, 0.04) 0%, transparent 45%),
-        radial-gradient(circle at 90% 80%, rgba(10, 150, 80, 0.04) 0%, transparent 45%);
+        radial-gradient(circle at 15% 15%, oklch(94% 0.045 64 / 0.5) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, oklch(95% 0.04 148 / 0.5) 0%, transparent 45%);
     }
 
     #presentation-wrapper {
@@ -90,7 +92,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95), #07080a 100%);
+      background: radial-gradient(circle at center, var(--surface) 0%, var(--bg) 100%);
       z-index: 20;
       display: flex;
       flex-direction: column;
@@ -119,13 +121,13 @@
       height: 70px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.06));
     }
 
     .brand-logos-launch .separator {
       width: 1px;
       height: 40px;
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--border);
     }
 
     .launch-title {
@@ -134,7 +136,7 @@
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 8px;
-      color: #fff;
+      color: var(--fg);
       animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-delay: 0.1s;
     }
@@ -161,7 +163,7 @@
       border: none;
       border-radius: 99px;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(220, 100, 30, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(220, 100, 30, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transition: transform 0.2s, box-shadow 0.3s;
       outline: none;
       z-index: 21;
@@ -173,7 +175,7 @@
     }
 
     .start-btn:hover {
-      box-shadow: 0 15px 40px rgba(220, 100, 30, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 40px rgba(220, 100, 30, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
     }
 
@@ -194,7 +196,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(10, 15, 25, 0.98) 0%, #050608 100%);
+      background: radial-gradient(circle at center, var(--surface) 0%, var(--bg) 100%);
       z-index: 10;
       display: flex;
       flex-direction: column;
@@ -214,12 +216,12 @@
 
     .outro-card {
       max-width: 680px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border);
       backdrop-filter: blur(25px);
       padding: 60px 40px;
       border-radius: 32px;
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 30px 60px color-mix(in oklch, var(--fg) 8%, transparent);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -242,20 +244,20 @@
       height: 60px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.05));
     }
 
     .brand-logos-outro .separator {
       width: 1px;
       height: 30px;
-      background: rgba(255, 255, 255, 0.12);
+      background: var(--border);
     }
 
     .outro-title {
       font-family: var(--font-display);
       font-size: clamp(24px, 3.5vw, 40px);
       font-weight: 800;
-      color: #fff;
+      color: var(--fg);
       margin-bottom: 12px;
       letter-spacing: -0.01em;
     }
@@ -279,7 +281,7 @@
       border: none;
       border-radius: 99px;
       text-decoration: none;
-      box-shadow: 0 8px 24px rgba(5, 122, 85, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+      box-shadow: 0 8px 24px rgba(5, 122, 85, 0.2), inset 0 1px 0 rgba(255,255,255,0.15);
       transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
       display: inline-flex;
       align-items: center;
@@ -288,7 +290,7 @@
     }
 
     .enter-btn:hover {
-      box-shadow: 0 12px 30px rgba(5, 122, 85, 0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+      box-shadow: 0 12px 30px rgba(5, 122, 85, 0.35), inset 0 1px 0 rgba(255,255,255,0.25);
       transform: translateY(-2px);
     }
 
@@ -359,7 +361,7 @@
     }
 
     .replay-link:hover {
-      color: #fff;
+      color: var(--fg);
     }
 
     /* Animations */
