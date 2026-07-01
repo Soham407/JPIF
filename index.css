@@ -799,7 +799,6 @@ h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
   font-size: 11px;
   margin-top: 5px;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   font-family: var(--font-mono);
 }
 .member-card .designation.founder-desc {
