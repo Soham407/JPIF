@@ -491,7 +491,7 @@
       }
 
       function hideControls() {
-        if (!video.paused && video.currentTime < 25) {
+        if (!video.paused && video.currentTime < 18) {
           playbackControls.classList.remove('is-visible');
           document.body.style.cursor = 'none';
         }
@@ -530,12 +530,12 @@
         }, 800);
       }
 
-      // Track playback time to dim out and redirect at 25 seconds
+      // Track playback time to dim out and redirect at 18 seconds
       function handleTimeUpdate() {
         const time = video.currentTime;
 
-        // Start dimming the video and exit to index.html at 25 seconds
-        if (time >= 25 && !fadeTriggered) {
+        // Start dimming the video and exit to index.html at 18 seconds
+        if (time >= 18 && !fadeTriggered) {
           fadeTriggered = true;
           video.classList.add('dimmed');
           hideControls();
