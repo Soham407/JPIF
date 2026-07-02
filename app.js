@@ -57,6 +57,7 @@
       if (menu) {
         var isOpen = menu.classList.toggle('is-open');
         dropdownToggle.classList.toggle('is-active', isOpen);
+        dropdownToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       }
       return;
     }
